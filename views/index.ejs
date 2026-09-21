@@ -1,39 +1,52 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Dynamic Website</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f9; }
-        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        .btn { padding: 10px 15px; background: #4285F4; color: white; text-decoration: none; border-radius: 4px; display: inline-block; margin-top: 10px;}
-        textarea { width: 100%; height: 100px; margin-top: 10px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Web App</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; background-color: #f4f4f9; }
+    .card { background: white; padding: 20px; border-radius: 10px; display: inline-block; box-shadow: 0 0 10px rgba(0,0,0,0.1); max-width: 400px; width: 90%; }
+    .btn { display: inline-block; padding: 10px 20px; color: white; background: #4285F4; border-radius: 5px; text-decoration: none; border: none; cursor: pointer; margin-top: 10px; }
+    .btn-danger { background: #dc3545; }
+    .btn-success { background: #28a745; }
+    textarea { width: 90%; height: 100px; margin-top: 10px; padding: 10px; }
+    img { border-radius: 50%; margin-bottom: 10px; width: 100px; height: 100px; object-fit: cover; }
+  </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Welcome to My Dynamic Web App</h1>
 
-        <% if (user) { %>
-            <h3>Namaste, <%= user.displayName %>!</h3>
-            <p><strong>Status:</strong> Aap Logged In hain.</p>
-            <a href="/logout" class="btn" style="background: #dc3545;">Logout</a>
+  <div class="card">
+    <h1>Welcome to My Dynamic Web App</h1>
 
-            <hr>
-            <h3>Website Content Edit Karein:</h3>
-            <form action="/edit-content" method="POST">
-                <textarea name="newContent"><%= content %></textarea><br>
-                <button type="submit" class="btn" style="background: #28a745;">Save / Edit Website</button>
-            </form>
-        <% } else { %>
-            <p>Content edit karne ke liye Google se login karein:</p>
-            <a href="/auth/google" class="btn">Sign in with Google</a>
-        <% } %>
+    <% if (user) { %>
+      <% if (user.photos && user.photos[0]) { %>
+        <img src="<%= user.photos[0].value %>" alt="Profile Photo">
+      <% } %>
+      <h2>Namaste, <%= user.displayName %>!</h2>
+      <p><b>Status:</b> Aap Logged In hain.</p>
+      <a href="/logout" class="btn btn-danger">Logout</a>
+      <hr>
 
+      <% if (isAdmin) { %>
+        <h3>Website Content Edit Karein (Admin Only):</h3>
+        <form action="/update" method="POST">
+          <textarea name="newContent"><%= content %></textarea><br>
+          <button type="submit" class="btn btn-success">Save / Edit Website</button>
+        </form>
         <hr>
-        <h3>Live Website Content:</h3>
-        <p><%= content %></p>
-    </div>
+      <% } %>
+
+    <% } else { %>
+      <p>Kripya continue karne ke liye Login karein:</p>
+      <a href="/auth/google" class="btn">Sign in with Google</a>
+      <hr>
+    <% } %>
+
+    <h3>Live Website Content:</h3>
+    <p><%= content %></p>
+  </div>
+
 </body>
 </html>
+

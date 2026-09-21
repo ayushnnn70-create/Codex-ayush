@@ -12,7 +12,7 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || 'mysecret',
     resave: false,
     saveUninitialized: true
 }));
@@ -20,18 +20,16 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// In-memory Database (Sikhne ke liye - baad me SQLite/MongoDB se connect kar sakte hain)
+// In-memory content
 let siteContent = "Yeh Meri Custom Website Ka Editable Content Hai!";
 
 // Passport Google Setup
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: process.env.CALLBACK_URL || "/auth/google/callback",
-
+    callbackURL: process.env.CALLBACK_URL || "/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    // Yahan user Google se authenticate hota hai
     return done(null, profile);
   }
 ));
@@ -41,11 +39,19 @@ passport.deserializeUser((obj, done) => done(null, obj));
 
 // Routes
 app.get('/', (req, res) => {
-    res.render('index', { user: req.user, content: siteContent });
+  const adminEmail = "zuxislive@gmail.com"; 
+  const isAdmin = req.user && req.user.emails && req.user.emails[0].value === adminEmail;
+
+  res.render('index', { 
+    user: req.user, 
+    content: siteContent,
+    isAdmin: isAdmin 
+  });
 });
 
-// Google Login Route
-app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] })
+);
 
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/' }),
@@ -54,24 +60,24 @@ app.get('/auth/google/callback',
   }
 );
 
-// Admin / Content Edit Route (Keval Logged-in Users Ke Liye)
-app.post('/edit-content', (req, res) => {
-    if (req.isAuthenticated()) {
-        siteContent = req.body.newContent;
-        res.redirect('/');
-    } else {
-        res.status(401).send("Aapko edit karne ke liye Google se login karna hoga.");
-    }
+app.post('/update', (req, res) => {
+  const adminEmail = "zuxislive@gmail.com";
+  const isAdmin = req.user && req.user.emails && req.user.emails[0].value === adminEmail;
+
+  if (isAdmin && req.body.newContent) {
+    siteContent = req.body.newContent;
+  }
+  res.redirect('/');
 });
 
-// Logout Route
 app.get('/logout', (req, res) => {
-    req.logout(() => {
-        res.redirect('/');
-    });
+  req.logout(() => {
+    res.redirect('/');
+  });
 });
 
-app.listen(process.env.PORT, () => {
-    console.log(`Server live hai: http://localhost:${process.env.PORT}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
