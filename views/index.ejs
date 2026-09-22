@@ -3,416 +3,380 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quantum Universe | Disha Rana & Ayush Rana</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <title>Universe Travel | Disha Rana & Ayush Rana</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #05070d;
-      --card-bg: rgba(13, 18, 30, 0.75);
-      --border-color: rgba(255, 255, 255, 0.08);
-      --accent-cyan: #38bdf8;
-      --accent-pink: #f472b6;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
+      --bg-dark: #0a0d14;
+      --text-main: #ffffff;
+      --text-muted: #8b92a5;
+      --accent-blue: #4a78a6;
+      --glow-red: rgba(255, 77, 77, 0.8);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      scroll-behavior: smooth;
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: var(--bg-dark);
       color: var(--text-main);
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-
-    #space-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
+      display: flex;
       height: 100vh;
-      z-index: -1;
-      pointer-events: none;
+      overflow: hidden; /* Body scroll lock */
     }
 
-    /* Ambient Schrödinger Equation Overlay */
-    .schrodinger-bg {
-      position: fixed;
+    /* Left Side - Fixed Image Section */
+    .left-pane {
+      width: 50%;
+      height: 100vh;
+      position: relative;
+      background: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1400&auto=format&fit=crop') center/cover no-repeat;
+    }
+
+    .logo-box {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      width: 45px;
+      height: 45px;
+      background: white;
+      color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 1px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    }
+
+    .vertical-social {
+      position: absolute;
+      left: 20px;
       top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-family: 'Fira Code', monospace;
-      font-size: clamp(2rem, 8vw, 6rem);
-      font-weight: 700;
-      color: rgba(56, 189, 248, 0.03);
-      white-space: nowrap;
-      user-select: none;
-      z-index: -1;
-      letter-spacing: 4px;
+      transform: translateY(-50%) rotate(-90deg);
+      display: flex;
+      gap: 30px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: white;
+      text-transform: uppercase;
+    }
+
+    .vertical-social span {
+      opacity: 0.5;
+      transition: opacity 0.3s;
+      cursor: pointer;
+    }
+    .vertical-social span:hover { opacity: 1; }
+
+    .blue-frame {
+      position: absolute;
+      top: 50%;
+      right: -40px;
+      transform: translateY(-50%);
+      width: 180px;
+      height: 380px;
+      border: 3px solid var(--accent-blue);
+      z-index: 10;
+      box-shadow: inset 0 0 20px rgba(74, 120, 166, 0.2);
+    }
+
+    /* Right Side - Scrollable Content Section */
+    .right-pane {
+      width: 50%;
+      height: 100vh;
+      padding: 40px 80px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background-color: var(--bg-dark);
+      overflow-y: auto; /* Advanced Scrolling enabled */
+      scroll-behavior: smooth;
+    }
+
+    /* Hide ugly scrollbars for a premium look */
+    .right-pane::-webkit-scrollbar {
+      width: 4px;
+    }
+    .right-pane::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+    .right-pane::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
     }
 
     nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(5, 7, 13, 0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-color);
-      padding: 18px 5%;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .brand-logo {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: 1.1rem;
+      justify-content: flex-end;
+      gap: 40px;
+      font-size: 12px;
       letter-spacing: 2px;
-      color: var(--text-main);
       text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      margin-bottom: 80px; /* Space before content starts */
     }
-
-    .brand-logo::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: var(--accent-cyan);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--accent-cyan);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 30px;
-    }
-
-    .nav-links a {
+    nav a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.3s;
+      transition: all 0.3s ease;
     }
-
-    .nav-links a:hover {
+    nav a:hover {
       color: var(--text-main);
+      text-shadow: 0 0 10px rgba(255,255,255,0.5);
     }
 
-    .container {
-      max-width: 1050px;
-      margin: 120px auto 60px;
-      padding: 0 24px;
+    .content-wrapper {
+      max-width: 500px;
+      position: relative;
     }
 
-    .glass-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 36px;
-      margin-bottom: 32px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    }
-
-    .meta-pills {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-
-    .pill-owner {
-      background: rgba(244, 114, 182, 0.1);
-      color: var(--accent-pink);
-      border: 1px solid rgba(244, 114, 182, 0.25);
-    }
-
-    .pill-coowner {
-      background: rgba(56, 189, 248, 0.1);
-      color: var(--accent-cyan);
-      border: 1px solid rgba(56, 189, 248, 0.25);
+    .schrodinger {
+      font-size: 14px;
+      color: var(--accent-blue);
+      opacity: 0.6;
+      letter-spacing: 3px;
+      font-family: monospace;
+      margin-bottom: 20px;
+      display: block;
     }
 
     h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      letter-spacing: -1px;
-      margin-bottom: 12px;
-      line-height: 1.2;
+      font-family: 'Outfit', sans-serif;
+      font-size: 5rem;
+      font-weight: 300;
+      line-height: 1.05;
+      margin-bottom: 40px;
+    }
+    h1 span.dash {
+      display: inline-block;
+      width: 70px;
+      height: 2px;
+      background: white;
+      vertical-align: middle;
+      margin-right: 15px;
     }
 
-    .subtitle {
+    /* Advanced Description Typography */
+    .advanced-text {
+      font-size: 14px;
       color: var(--text-muted);
-      font-size: 1rem;
-      margin-bottom: 28px;
+      line-height: 1.9;
+      text-align: justify;
+      margin-bottom: 40px;
     }
-
-    .user-profile {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding-top: 10px;
+    .advanced-text p {
+      margin-bottom: 20px;
     }
-
-    .user-profile img {
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      border: 1px solid var(--accent-cyan);
-      object-fit: cover;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 22px;
-      border-radius: 8px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      transition: all 0.2s ease;
-    }
-
-    .btn-primary {
-      background: var(--text-main);
-      color: var(--bg-dark);
-    }
-
-    .btn-primary:hover {
-      background: #e2e8f0;
-      transform: translateY(-1px);
-    }
-
-    .btn-danger {
-      background: rgba(239, 68, 68, 0.15);
-      color: #f87171;
-      border: 1px solid rgba(239, 68, 68, 0.3);
-    }
-
-    .btn-save {
-      background: var(--accent-cyan);
-      color: var(--bg-dark);
-      margin-top: 12px;
-    }
-
-    textarea {
-      width: 100%;
-      height: 110px;
-      background: rgba(5, 7, 13, 0.8);
-      border: 1px solid var(--border-color);
+    .highlight {
       color: var(--text-main);
-      padding: 14px;
-      border-radius: 8px;
-      font-family: 'Fira Code', monospace;
-      font-size: 0.9rem;
-      outline: none;
+      font-weight: 400;
+      letter-spacing: 0.5px;
     }
 
-    textarea:focus {
-      border-color: var(--accent-cyan);
+    /* Unique Date Section (High-Tech Design) */
+    .unique-date-box {
+      margin-top: 50px;
+      margin-bottom: 60px;
+      padding: 25px;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 4px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0) 100%);
+      position: relative;
+      overflow: hidden;
     }
-
-    /* Contact Section */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+    .unique-date-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 2px; height: 100%;
+      background: var(--accent-blue);
+      box-shadow: 0 0 15px var(--accent-blue);
+    }
+    .date-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: monospace;
+      font-size: 13px;
+      color: var(--accent-blue);
+      letter-spacing: 2px;
+    }
+    .unique-label {
+      text-align: center;
       margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px dashed rgba(255,255,255,0.1);
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      color: var(--text-main);
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      text-shadow: 0 0 8px rgba(255,255,255,0.3);
     }
 
-    .contact-card {
-      background: rgba(5, 7, 13, 0.6);
-      border: 1px solid var(--border-color);
-      padding: 20px;
-      border-radius: 12px;
+    /* Auth & Admin System */
+    .auth-section {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 30px;
+      margin-bottom: 40px;
     }
-
-    .contact-card h4 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.85rem;
-      color: var(--text-muted);
+    .btn {
+      display: inline-block;
+      padding: 10px 22px;
+      background: transparent;
+      border: 1px solid var(--text-muted);
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 12px;
+      border-radius: 2px;
+      cursor: pointer;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 8px;
+      transition: 0.3s;
     }
-
-    .contact-card p {
-      font-size: 0.95rem;
-      color: var(--text-main);
-      font-weight: 500;
+    .btn:hover { border-color: white; background: rgba(255,255,255,0.05); }
+    
+    textarea {
+      width: 100%;
+      height: 80px;
+      background: rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: white;
+      padding: 15px;
+      font-size: 13px;
+      margin-bottom: 15px;
+      outline: none;
+      font-family: inherit;
     }
+    textarea:focus { border-color: var(--accent-blue); }
 
-    footer {
-      border-top: 1px solid var(--border-color);
-      padding: 30px 0;
-      text-align: center;
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      padding-bottom: 60px; /* Space at the very bottom */
+    }
+    .footer-col h6 {
+      font-size: 10px;
       color: var(--text-muted);
-      font-size: 0.85rem;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .footer-col p {
+      font-size: 12px;
+      color: var(--text-main);
+      line-height: 1.6;
+      opacity: 0.8;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 900px) {
+      body { flex-direction: column; overflow-y: auto; height: auto; }
+      .left-pane { width: 100%; height: 50vh; position: relative; }
+      .right-pane { width: 100%; height: auto; padding: 40px 20px; overflow-y: visible; }
+      .blue-frame { display: none; }
+      h1 { font-size: 3.5rem; }
+      .date-row { flex-direction: column; gap: 15px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Schrödinger Equation BG -->
-  <div class="schrodinger-bg">iℏ ∂/∂t Ψ(r,t) = Ĥ Ψ(r,t)</div>
-
-  <!-- Space Canvas Background -->
-  <canvas id="space-canvas"></canvas>
-
-  <nav>
-    <div class="brand-logo">Quantum Engine</div>
-    <div class="nav-links">
-      <a href="#overview">Overview</a>
-      <a href="#broadcast">Broadcast</a>
-      <% if (isAdmin) { %><a href="#admin">Admin Area</a><% } %>
-      <a href="#contact">Contact Us</a>
+  <!-- Fixed Left Image Section -->
+  <div class="left-pane">
+    <div class="logo-box">DR</div>
+    <div class="vertical-social">
+      <span>Twitter</span>
+      <span>Instagram</span>
     </div>
-  </nav>
-
-  <div class="container">
-    
-    <!-- Hero / Metadata Section -->
-    <section id="overview" class="glass-card">
-      <div class="meta-pills">
-        <span class="pill pill-owner">OWNER: DISHA RANA</span>
-        <span class="pill pill-coowner">CO-OWNER: AYUSH RANA</span>
-      </div>
-
-      <h1>Deep Space & Quantum Hub</h1>
-      <p class="subtitle">An advanced Web App infrastructure for live telemetry and data broadcasting.</p>
-
-      <% if (user) { %>
-        <div class="user-profile">
-          <% if (user.photos && user.photos[0]) { %>
-            <img src="<%= user.photos[0].value %>" alt="Profile">
-          <% } %>
-          <div>
-            <h3 style="font-size: 1.05rem;"><%= user.displayName %></h3>
-            <p style="color: #34d399; font-size: 0.85rem;">● Authenticated Session</p>
-            <a href="/logout" class="btn btn-danger" style="margin-top: 10px;">Disconnect</a>
-          </div>
-        </div>
-      <% } else { %>
-        <a href="/auth/google" class="btn btn-primary">Sign in with Google</a>
-      <% } %>
-    </section>
-
-    <!-- Admin Panel (Admin Only) -->
-    <% if (isAdmin) { %>
-      <section id="admin" class="glass-card" style="border-color: rgba(56, 189, 248, 0.3);">
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; margin-bottom: 8px;">⚡ Live Control Panel</h3>
-        <p class="subtitle" style="margin-bottom: 14px; font-size: 0.85rem;">Update public broadcast state below:</p>
-        <form action="/update" method="POST">
-          <textarea name="newContent"><%= content %></textarea>
-          <button type="submit" class="btn btn-save">Publish Stream</button>
-        </form>
-      </section>
-    <% } %>
-
-    <!-- Broadcast Section -->
-    <section id="broadcast" class="glass-card">
-      <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; margin-bottom: 12px;">📡 Live Announcement</h3>
-      <div style="background: rgba(5, 7, 13, 0.7); padding: 18px; border-radius: 8px; border-left: 2px solid var(--accent-cyan); font-family: 'Fira Code', monospace; font-size: 0.95rem; color: var(--accent-cyan);">
-        <%= content %>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="glass-card">
-      <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; margin-bottom: 6px;">Contact Us</h3>
-      <p class="subtitle" style="margin-bottom: 16px; font-size: 0.85rem;">Reach out to the executive management team.</p>
-
-      <div class="contact-grid">
-        <div class="contact-card">
-          <h4>Owner Contact</h4>
-          <p>Disha Rana</p>
-        </div>
-        <div class="contact-card">
-          <h4>Co-Owner Contact</h4>
-          <p>Ayush Rana</p>
-        </div>
-        <div class="contact-card">
-          <h4>Official Admin</h4>
-          <p>zuxislive@gmail.com</p>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      Designed & Maintained by Disha Rana & Ayush Rana © 2026
-    </footer>
-
+    <div class="blue-frame"></div>
   </div>
 
-  <!-- Particle Background Engine -->
-  <script>
-    const canvas = document.getElementById('space-canvas');
-    const ctx = canvas.getContext('2d');
+  <!-- Scrollable Right Content Section -->
+  <div class="right-pane">
+    <nav>
+      <a href="#">System</a>
+      <a href="#">Telemetry</a>
+      <a href="#">Coordinates</a>
+      <a href="#">Secure Comm</a>
+    </nav>
 
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    const particles = Array.from({ length: 90 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      radius: Math.random() * 1.5 + 0.5,
-      vx: (Math.random() - 0.5) * 0.2,
-      vy: (Math.random() - 0.5) * 0.2,
-      alpha: Math.random() * 0.6 + 0.2
-    }));
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    <div class="content-wrapper">
+      <span class="schrodinger">iℏ ∂/∂t Ψ(r,t) = Ĥ Ψ(r,t)</span>
       
-      particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
+      <h1>Universe<br><span class="dash"></span> travel</h1>
+      
+      <!-- Highly Advanced Scrollable Description -->
+      <div class="advanced-text">
+        <p>
+          Navigating the cosmos requires more than conventional propulsion; it demands an absolute understanding of the fabric of space-time. By manipulating <span class="highlight">quantum entanglement</span> and macroscopic gravitational fields, we calculate trajectories through the interstellar medium that were previously theorized as mathematically impossible.
+        </p>
+        <p>
+          As our vessels traverse dense nebulae and monitor <span class="highlight">blackbody absorption metrics</span> near the event horizon, our on-board computing continuously analyzes electric flux and non-linear differential equations. This ensures our kinetic shielding remains intact against extreme cosmic radiation and operator liquidity traps hidden in deep space sectors.
+        </p>
+        <p>
+          This is not merely a physical journey. It is a traversal across theoretical dimensions, bridging the gap between absolute calculus and the physical reality of the solar system.
+        </p>
+        
+        <!-- Live Admin Data from App -->
+        <p style="margin-top: 25px; border-left: 2px solid var(--accent-blue); padding-left: 15px; color: white;">
+          <em>Live Transmission:</em> <%= content %>
+        </p>
+      </div>
 
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
+      <!-- User Authentication & Admin Edit -->
+      <div class="auth-section">
+        <% if (user) { %>
+          <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+            <% if (user.photos && user.photos[0]) { %>
+              <img src="<%= user.photos[0].value %>" alt="Profile" style="width: 35px; height: 35px; border-radius: 50%; border: 1px solid var(--accent-blue);">
+            <% } %>
+            <p style="font-size: 13px; color: var(--text-muted); letter-spacing: 1px;">Access Granted: <span style="color: white;"><%= user.displayName %></span></p>
+            <a href="/logout" class="btn" style="padding: 6px 12px; border-color: rgba(255,77,77,0.5); color: #ff4d4d; font-size: 10px;">Terminate Session</a>
+          </div>
 
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
-        ctx.fill();
-      });
+          <% if (isAdmin) { %>
+            <form action="/update" method="POST">
+              <textarea name="newContent" placeholder="Enter new operational coordinates or broadcast..."><%= content %></textarea>
+              <button type="submit" class="btn" style="border-color: var(--accent-blue); color: var(--accent-blue);">Update System Grid</button>
+            </form>
+          <% } %>
+        <% } else { %>
+          <a href="/auth/google" class="btn">Initialize Override (Sign In)</a>
+        <% } %>
+      </div>
 
-      requestAnimationFrame(animate);
-    }
-    animate();
-  </script>
+      <!-- The Unique Date Section you requested -->
+      <div class="unique-date-box">
+        <div class="date-row">
+          <span>ORIGIN: 26 APRIL</span>
+          <span>ECLIPSE: 13 SEPTEMBER</span>
+        </div>
+        <div class="unique-label">
+          — Unique Date —
+        </div>
+      </div>
+
+      <!-- Final Footer Information -->
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h6>COMMANDER / OWNER</h6>
+          <p>Disha Rana<br>Sector 25.240<br>Deep Space HQ</p>
+        </div>
+        <div class="footer-col">
+          <h6>SYSTEM CO-OWNER</h6>
+          <p>Ayush Rana<br>T. +0095 5176 6598<br>E. zuxislive@gmail.com</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </body>
 </html>
