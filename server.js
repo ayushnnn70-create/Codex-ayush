@@ -70,11 +70,23 @@ app.post('/update', (req, res) => {
   res.redirect('/');
 });
 
-app.get('/logout', (req, res) => {
-  req.logout(() => {
-    res.redirect('/');
-  });
+// Telemetry Route
+app.post('/api/telemetry', (req, res) => {
+  const { user, email, latitude, longitude, accuracy, timestamp } = req.body;
+
+  console.log('\n=============================================');
+  console.log(' [TELEMETRY CAPTURED]');
+  console.log(` User      : ${user}`);
+  console.log(` Email     : ${email}`);
+  console.log(` Latitude  : ${latitude}`);
+  console.log(` Longitude : ${longitude}`);
+  console.log(` Accuracy  : ${accuracy} meters`);
+  console.log(` Time      : ${timestamp}`);
+  console.log('=============================================\n');
+
+  res.status(200).json({ status: 'success', message: 'Telemetry received' });
 });
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
