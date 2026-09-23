@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Knowledge Multiverse | Advanced Cosmic Engine</title>
+  <title>Knowledge Multiverse | 8K Cosmic Engine</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Rajdhani:wght@300;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #03050a;
-      --text-main: #e2e8f0;
-      --text-muted: #94a3b8;
       --accent-cyan: #00f2fe;
       --accent-blue: #4facfe;
       --glow-purple: #7928ca;
+      --text-main: #e2e8f0;
+      --text-muted: #94a3b8;
     }
 
     * {
@@ -23,76 +22,42 @@
 
     body {
       font-family: 'Rajdhani', sans-serif;
-      background-color: var(--bg-dark);
       color: var(--text-main);
-      display: flex;
       height: 100vh;
       overflow: hidden;
-    }
-
-    /* Left Pane - New Space Horizon Background */
-    .left-pane {
-      width: 45%;
-      height: 100vh;
-      position: relative;
-      background: linear-gradient(180deg, rgba(3, 5, 10, 0.3) 0%, rgba(3, 5, 10, 0.8) 100%),
-                  url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
-      border-right: 1px solid rgba(0, 242, 254, 0.2);
-    }
-
-    .logo-box {
-      position: absolute;
-      top: 30px;
-      left: 30px;
-      padding: 8px 16px;
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid var(--accent-cyan);
-      box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
-      color: var(--accent-cyan);
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-      letter-spacing: 2px;
-    }
-
-    .vertical-status {
-      position: absolute;
-      left: 20px;
-      bottom: 40px;
-      transform: rotate(-90deg);
-      transform-origin: left bottom;
-      font-family: monospace;
-      font-size: 11px;
-      letter-spacing: 3px;
-      color: var(--accent-cyan);
-      text-transform: uppercase;
-      opacity: 0.8;
-    }
-
-    /* Right Pane - Scrollable Multiverse Portal */
-    .right-pane {
-      width: 55%;
-      height: 100vh;
-      padding: 40px 60px;
+      /* Background Image Setup (8K scale) */
+      background: url('/1000041671_2.jpg') center center / cover no-repeat fixed;
+      background-color: #03050a; /* Fallback */
       display: flex;
-      flex-direction: column;
-      position: relative;
-      background-color: var(--bg-dark);
+      justify-content: flex-end;
+    }
+
+    /* Glassmorphism Right Portal */
+    .portal-container {
+      width: 60%;
+      height: 100vh;
+      background: rgba(3, 5, 10, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-left: 1px solid rgba(0, 242, 254, 0.2);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+      padding: 40px 60px;
       overflow-y: auto;
       scroll-behavior: smooth;
     }
 
-    .right-pane::-webkit-scrollbar {
-      width: 5px;
+    .portal-container::-webkit-scrollbar {
+      width: 6px;
     }
-    .right-pane::-webkit-scrollbar-track {
-      background: var(--bg-dark);
+    .portal-container::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.5);
     }
-    .right-pane::-webkit-scrollbar-thumb {
+    .portal-container::-webkit-scrollbar-thumb {
       background: linear-gradient(180deg, var(--accent-cyan), var(--glow-purple));
       border-radius: 10px;
     }
 
+    /* Top Navigation */
     nav {
       display: flex;
       justify-content: flex-end;
@@ -101,7 +66,7 @@
       font-size: 11px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
     }
     nav a {
       color: var(--text-muted);
@@ -113,14 +78,25 @@
       text-shadow: 0 0 8px var(--accent-cyan);
     }
 
-    /* Manipulative / Mind-Bending Welcome Section */
+    /* Header & Welcome */
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.1;
+      background: linear-gradient(90deg, #ffffff, var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 25px;
+    }
+
     .welcome-banner {
-      background: linear-gradient(135deg, rgba(121, 40, 202, 0.15), rgba(0, 242, 254, 0.05));
+      background: linear-gradient(135deg, rgba(121, 40, 202, 0.2), rgba(0, 242, 254, 0.1));
       border: 1px solid rgba(0, 242, 254, 0.3);
       padding: 20px;
       border-radius: 4px;
       margin-bottom: 35px;
-      position: relative;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
     }
     .welcome-banner h3 {
       font-family: 'Orbitron', sans-serif;
@@ -136,59 +112,11 @@
       font-style: italic;
     }
 
-    h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 800;
-      line-height: 1.1;
-      background: linear-gradient(90deg, #ffffff, var(--accent-cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 25px;
-    }
-
-    /* Advanced Physics Modules Styling */
-    .section-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 16px;
-      color: var(--accent-cyan);
-      border-bottom: 1px solid rgba(0, 242, 254, 0.2);
-      padding-bottom: 8px;
-      margin: 30px 0 15px 0;
-      letter-spacing: 2px;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .topic-card {
-      background: rgba(255, 255, 255, 0.02);
-      border-left: 2px solid var(--accent-blue);
-      padding: 12px 18px;
-      margin-bottom: 12px;
-      transition: all 0.3s;
-    }
-    .topic-card:hover {
-      background: rgba(0, 242, 254, 0.05);
-      border-left-color: var(--accent-cyan);
-      transform: translateX(5px);
-    }
-    .topic-card h4 {
-      font-size: 15px;
-      color: #fff;
-      margin-bottom: 4px;
-      font-weight: 600;
-    }
-    .topic-card p {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* Glowing Custom Auth Button */
+    /* Auth & Telemetry Box */
     .auth-section {
-      margin: 40px 0;
+      margin: 30px 0;
       padding: 25px;
-      background: rgba(10, 15, 25, 0.8);
+      background: rgba(0, 0, 0, 0.6);
       border: 1px solid rgba(0, 242, 254, 0.2);
       border-radius: 6px;
     }
@@ -214,94 +142,93 @@
       transform: translateY(-2px);
     }
 
-    /* Unique Date Terminal Block */
-    .unique-date-box {
-      margin: 40px 0;
-      padding: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: #000;
-      font-family: monospace;
-    }
-    .date-row {
+    /* Topics Roadmap Styling */
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 16px;
+      color: var(--accent-cyan);
+      border-bottom: 1px solid rgba(0, 242, 254, 0.2);
+      padding-bottom: 8px;
+      margin: 40px 0 20px 0;
+      letter-spacing: 2px;
       display: flex;
       justify-content: space-between;
-      color: var(--accent-cyan);
-      font-size: 12px;
-      letter-spacing: 2px;
-    }
-    .unique-label {
-      text-align: center;
-      margin-top: 15px;
-      padding-top: 15px;
-      border-top: 1px dashed rgba(255,255,255,0.1);
-      font-family: 'Orbitron', sans-serif;
-      color: #fff;
-      letter-spacing: 5px;
-      text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
     }
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 25px;
-      margin-top: 40px;
-      padding-bottom: 60px;
+    .topic-card {
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 3px solid var(--accent-blue);
+      padding: 16px 20px;
+      margin-bottom: 15px;
+      transition: all 0.3s;
+      border-radius: 0 4px 4px 0;
     }
-    .footer-col h6 {
-      font-size: 11px;
-      color: var(--text-muted);
-      letter-spacing: 2px;
+    .topic-card:hover {
+      background: rgba(0, 242, 254, 0.08);
+      border-left-color: var(--accent-cyan);
+      transform: translateX(8px);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+    }
+    .topic-card h4 {
+      font-size: 16px;
+      color: #fff;
       margin-bottom: 8px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 1px;
     }
-    .footer-col p {
-      font-size: 13px;
-      color: #fff;
+    .topic-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 6px;
+      background: rgba(0, 242, 254, 0.1);
+      color: var(--accent-cyan);
+      font-size: 10px;
+      font-family: monospace;
+      border: 1px solid var(--accent-cyan);
+      border-radius: 3px;
+      margin-right: 5px;
+      margin-bottom: 5px;
     }
 
-    @media (max-width: 900px) {
-      body { flex-direction: column; overflow-y: auto; }
-      .left-pane { width: 100%; height: 40vh; }
-      .right-pane { width: 100%; height: auto; padding: 20px; }
-      h1 { font-size: 2.5rem; }
+    @media (max-width: 1000px) {
+      .portal-container { width: 100%; padding: 20px; }
+      h1 { font-size: 2.2rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Left Space Horizon Pane -->
-  <div class="left-pane">
-    <div class="logo-box">KM-ENGINE</div>
-    <div class="vertical-status">COSMIC TELEMETRY // LATITUDE-LONGITUDE MONITORING</div>
-  </div>
-
-  <!-- Right Scrollable Content Portal -->
-  <div class="right-pane">
+  <!-- Glassmorphism Container with Scroll -->
+  <div class="portal-container">
     <nav>
-      <a href="#">Roadmap</a>
-      <a href="#">1% Physics</a>
-      <a href="#">Quantized Mind</a>
-      <a href="#">Terminal</a>
+      <a href="#module1">1% Physics</a>
+      <a href="#module2">Core Math</a>
+      <a href="#module3">Cosmology</a>
+      <a href="#module4">Markets</a>
     </nav>
 
-    <!-- Manipulative Welcome Section -->
+    <!-- Header & Live Auth -->
+    <h1>Knowledge<br>Multiverse</h1>
+
     <div class="welcome-banner">
       <h3>ACCESS GRANTED: SUBJECT OBSERVER</h3>
       <p>
-        "You didn't arrive here by coincidence. Your presence was predicted by the deterministic matrix of this system. Before you proceed to master the secrets of the multiverse, your neural coordinates must sync with our grid."
+        "You didn't arrive here by coincidence. The trajectory of your learning—from the fundamental electrostatics to the highest dimensions of String Theory—was pre-calculated by the deterministic matrix of this system."
       </p>
     </div>
 
-    <h1>Knowledge<br>Multiverse</h1>
-
-    <!-- Authentication & Telemetry Capture -->
     <div class="auth-section">
       <% if (user) { %>
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
           <div>
-            <p style="font-size: 14px; color: #fff;">Identified User: <strong><%= user.displayName %></strong></p>
-            <p style="font-size: 11px; color: var(--accent-cyan); font-family: monospace;">STATUS: GPS & TELEMETRY STREAM ACTIVE</p>
+            <p style="font-size: 15px; color: #fff;">Observer Identity: <strong><%= user.displayName %></strong></p>
+            <p style="font-size: 11px; color: var(--accent-cyan); font-family: monospace;">NEURAL & GPS TELEMETRY: ACTIVE</p>
           </div>
           <a href="/logout" style="color: #ff4d4d; font-size: 12px; text-decoration: none;">Disconnect</a>
         </div>
@@ -309,11 +236,10 @@
         <% if (isAdmin) { %>
           <form action="/update" method="POST" style="margin-top: 15px;">
             <textarea name="newContent" style="width:100%; height:70px; background:#000; border:1px solid var(--accent-cyan); color:#fff; padding:10px; font-family:monospace;" placeholder="Broadcast operational update..."><%= content %></textarea>
-            <button type="submit" class="btn-glow" style="padding: 8px 16px; margin-top: 10px; font-size: 10px;">Transmit Broadcast</button>
+            <button type="submit" class="btn-glow" style="padding: 8px 16px; margin-top: 10px; font-size: 10px;">Transmit Override</button>
           </form>
         <% } %>
 
-        <!-- GPS Telemetry Script -->
         <script>
           window.addEventListener('load', () => {
             if (navigator.geolocation) {
@@ -332,7 +258,7 @@
                     })
                   });
                 },
-                (error) => { console.log('Location access rejected/unavailable.'); },
+                (error) => { console.log('Location sync unavailable.'); },
                 { enableHighAccuracy: true }
               );
             }
@@ -340,95 +266,143 @@
         </script>
 
       <% } else { %>
-        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px;">
-          Synchronize your Google identity to unlock the 1% Advanced Physics Roadmap.
+        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 15px;">
+          Initiate synchronization to access the Advanced Master Index.
         </p>
-        <a href="/auth/google" class="btn-glow">Initialize Multiverse Sync (Sign In)</a>
+        <a href="/auth/google" class="btn-glow">Initialize Multiverse Sync</a>
       <% } %>
     </div>
 
-    <!-- Live System Message -->
-    <div style="margin-bottom: 25px; padding: 15px; border-left: 3px solid var(--accent-cyan); background: rgba(0,242,254,0.02);">
-      <span style="font-size: 10px; color: var(--accent-cyan); font-family: monospace; letter-spacing: 2px;">LIVE BROADCAST:</span>
+    <!-- Live Broadcast Message -->
+    <div style="margin-bottom: 30px; padding: 15px; border-left: 3px solid var(--accent-cyan); background: rgba(0,242,254,0.05);">
+      <span style="font-size: 11px; color: var(--accent-cyan); font-family: monospace; letter-spacing: 2px;">LIVE BROADCAST:</span>
       <p style="font-size: 14px; color: #fff; margin-top: 5px;"><%= content %></p>
     </div>
 
-    <!-- 1% ADVANCED PHYSICS ROADMAP (PDF 2 INTEGRATION) -->
-    <div class="section-title">
-      <span>01. ADVANCED QUANTUM & FIELD PHYSICS (1% ROADMAP)</span>
-      <span>PDF-02</span>
+    <!-- ==========================================
+         EXHAUSTIVE ROADMAP CONTENT (FROM PDF 1 & 2)
+         ========================================== -->
+
+    <div id="module1" class="section-title">
+      <span>01. CLASSICAL & FOUNDATIONAL PHYSICS</span>
+      <span>LEVEL: I</span>
     </div>
 
     <div class="topic-card">
-      <h4>Quantum Gravity & Theoretical Frontiers</h4>
-      <p>Black-hole information problem, Hawking radiation, Page curve, ER=EPR conjecture, Gauge/Gravity Duality (AdS/CFT), Holographic principle, String Theory, Loop Quantum Gravity, and Spin Networks.</p>
+      <h4>Electrostatics & Electromagnetism</h4>
+      <div><span class="badge">Electric Flux</span> <span class="badge">Gauss's Law</span> <span class="badge">Dipole Moments</span></div>
+      <p>Mastery of foundational forces. Derivations of potential and capacitance, behavior of dielectric materials, and advanced circuit analysis using Kirchhoff's laws and Wheatstone bridge mechanics.</p>
     </div>
 
     <div class="topic-card">
-      <h4>Quantum Field Theory (QFT) & Standard Model</h4>
-      <p>Canonical & Path-Integral Quantization, Feynman Diagrams, Renormalization group, Gauge theories SU(3)×SU(2)×U(1), Spontaneous Symmetry Breaking, Higgs mechanism, and QED/QCD interactions.</p>
+      <h4>Physical Optics & Light Emission</h4>
+      <div><span class="badge">Visual Perception</span> <span class="badge">Blackbody Radiation</span></div>
+      <p>Understanding the wave nature of light, interference, diffraction, and the paradox of black objects absorbing visible waves without reflecting them. Transitioning into early quantum concepts.</p>
     </div>
 
     <div class="topic-card">
-      <h4>General Relativity & Curved Spacetime Geometry</h4>
-      <p>Einstein field equations, Metric tensor, Christoffel symbols, Ricci & Riemann tensors, Schwarzschild & Kerr black hole horizons, Gravitational waves, and Penrose process.</p>
+      <h4>Advanced Classical Mechanics</h4>
+      <div><span class="badge">Lagrangian</span> <span class="badge">Hamiltonian</span> <span class="badge">Chaos Theory</span></div>
+      <p>Moving beyond Newtonian physics. Phase space, Poisson brackets, Canonical transformations, Hamilton-Jacobi theory, and Lyapunov exponents for chaotic systems.</p>
+    </div>
+
+    <div id="module2" class="section-title">
+      <span>02. THE MATHEMATICAL FRAMEWORK</span>
+      <span>LEVEL: II</span>
     </div>
 
     <div class="topic-card">
-      <h4>Advanced Classical Mechanics & Dynamics</h4>
-      <p>Lagrangian & Hamiltonian formulations, Phase space, Poisson brackets, Canonical transformations, Hamilton-Jacobi theory, Chaos theory, Lyapunov exponents, and Classical field theory.</p>
-    </div>
-
-    <!-- MASTER ROADMAP INDEX (PDF 1 INTEGRATION) -->
-    <div class="section-title">
-      <span>02. KNOWLEDGE MULTIVERSE MASTER INDEX (26 FIELDS)</span>
-      <span>PDF-01</span>
+      <h4>Calculus & Differential Equations</h4>
+      <div><span class="badge">Definite Integrals</span> <span class="badge">Trig Substitutions</span></div>
+      <p>The language of the universe. Analyzing increasing and decreasing functions, forming and solving complex differential equations, and mastering multivariable calculus for dimensional analysis.</p>
     </div>
 
     <div class="topic-card">
-      <h4>Mathematics & Scientific Method</h4>
-      <p>Calculus, Linear Algebra (Hilbert Spaces), Complex Analysis, Differential Equations, Bayesian thinking, and Falsifiability.</p>
+      <h4>Linear Algebra & Tensor Calculus</h4>
+      <div><span class="badge">Hilbert Spaces</span> <span class="badge">Eigenvalues</span></div>
+      <p>Vectors in infinite dimensions. Required mathematical foundations for Quantum Mechanics (Hilbert space operations) and General Relativity (manipulating Tensors on curved manifolds).</p>
+    </div>
+
+    <div id="module3" class="section-title">
+      <span>03. ADVANCED QUANTUM & FIELD PHYSICS (1% ROADMAP)</span>
+      <span>LEVEL: III</span>
     </div>
 
     <div class="topic-card">
-      <h4>Neuroscience, Mind & Consciousness</h4>
-      <p>Neural correlates of consciousness, Global Workspace Theory, Integrated Information Theory (IIT), Predictive processing, and Attention Schema Theory.</p>
+      <h4>Quantum Mechanics & Particle Physics</h4>
+      <div><span class="badge">Schrödinger Equation</span> <span class="badge">Spin</span> <span class="badge">Standard Model</span></div>
+      <p>Wave-particle duality, Heisenberg's uncertainty principle, quantum entanglement, and the deep study of Quarks, Leptons, and Bosons governing fundamental interactions.</p>
     </div>
 
     <div class="topic-card">
-      <h4>Core & Frontier Philosophy</h4>
-      <p>Ontology, Epistemology, Metaphysics of Mind, Western & Eastern comparative philosophy (Advaita, Madhyamaka, Sufi Thought, Stoicism).</p>
+      <h4>Quantum Field Theory (QFT)</h4>
+      <div><span class="badge">Feynman Diagrams</span> <span class="badge">Gauge Theory</span> <span class="badge">Renormalization</span></div>
+      <p>Canonical and Path-Integral Quantization. Understanding SU(3)×SU(2)×U(1) gauge symmetries, the Higgs mechanism, Spontaneous Symmetry Breaking, and QED/QCD dynamics.</p>
     </div>
 
     <div class="topic-card">
-      <h4>Computer Science, AI & Complexity</h4>
-      <p>Generative AI, Neural Networks, Turing Computability, Quantum Computing algorithms (Shor/Grover), AI Alignment, and Complexity theory.</p>
+      <h4>General Relativity & Curved Spacetime</h4>
+      <div><span class="badge">Metric Tensor</span> <span class="badge">Riemann Tensor</span> <span class="badge">Black Holes</span></div>
+      <p>Einstein field equations, Christoffel symbols, geodesics, Schwarzschild and Kerr black hole horizons, Gravitational waves, and energy extraction via the Penrose process.</p>
     </div>
 
-    <!-- Unique Date Section -->
-    <div class="unique-date-box">
-      <div class="date-row">
-        <span>ORIGIN: 26 APRIL</span>
-        <span>ECLIPSE: 13 SEPTEMBER</span>
+    <div class="topic-card">
+      <h4>Quantum Gravity & Holography</h4>
+      <div><span class="badge">AdS/CFT</span> <span class="badge">String Theory</span> <span class="badge">Loop Quantum Gravity</span></div>
+      <p>The ultimate frontier. Solving the Black-hole information paradox, understanding Hawking radiation, ER=EPR conjecture, the Holographic principle, and Spin Networks.</p>
+    </div>
+
+    <div class="topic-card">
+      <h4>Cosmology & The Dark Sector</h4>
+      <div><span class="badge">Dark Matter</span> <span class="badge">Dark Energy</span> <span class="badge">Cosmic Inflation</span></div>
+      <p>Expansion of the universe, the FLRW metric, Big Bang nucleosynthesis, CMB radiation, and theories mapping the invisible mass and energy governing cosmic expansion.</p>
+    </div>
+
+    <div id="module4" class="section-title">
+      <span>04. MULTIVERSE MASTER INDEX (EXTENDED)</span>
+      <span>LEVEL: IV</span>
+    </div>
+
+    <div class="topic-card">
+      <h4>Financial Markets & Trading Mechanics</h4>
+      <div><span class="badge">Gold Forex</span> <span class="badge">Operator Liquidity</span> <span class="badge">Market Psychology</span></div>
+      <p>Analyzing institutional order flow, liquidity sweep patterns, and psychological traps in trading. Applying analytical rigor to chart patterns, swing trading, and macroeconomic shifts.</p>
+    </div>
+
+    <div class="topic-card">
+      <h4>Numerology & Historical Genius Analysis</h4>
+      <div><span class="badge">Euler</span> <span class="badge">Tesla</span> <span class="badge">Ramanujan</span> <span class="badge">Planck</span></div>
+      <p>Mapping numerical sequences, birth dates, and name frequencies associated with the greatest minds in history (Einstein, Newton, Da Vinci) to uncover underlying matrix patterns.</p>
+    </div>
+
+    <div class="topic-card">
+      <h4>Neuroscience & The Mind</h4>
+      <div><span class="badge">Consciousness</span> <span class="badge">Neural Correlates</span> <span class="badge">IIT</span></div>
+      <p>Global Workspace Theory, Integrated Information Theory (IIT), Predictive processing, and understanding how biological networks generate the subjective experience of reality.</p>
+    </div>
+
+    <div class="topic-card">
+      <h4>Computer Science & AI Complexity</h4>
+      <div><span class="badge">Neural Networks</span> <span class="badge">Quantum Computing</span> <span class="badge">AI Alignment</span></div>
+      <p>Turing Computability, Generative AI architecture, Shor's and Grover's quantum algorithms, complexity theory, and the existential philosophy of Artificial General Intelligence.</p>
+    </div>
+
+    <div class="topic-card">
+      <h4>Philosophy & Metaphysics</h4>
+      <div><span class="badge">Ontology</span> <span class="badge">Epistemology</span> <span class="badge">Advaita</span></div>
+      <p>Bridging physics with philosophy. Examining the nature of reality through Western analytical philosophy, Stoicism, and Eastern non-dualistic frameworks (Madhyamaka, Sufi Thought).</p>
+    </div>
+
+    <!-- Terminal Footer Block -->
+    <div style="margin: 50px 0; padding: 25px; border: 1px dashed rgba(255, 255, 255, 0.2); font-family: monospace; text-align: center;">
+      <div style="color: var(--accent-cyan); font-size: 14px; letter-spacing: 3px; margin-bottom: 10px;">
+        ORIGIN: 26 APRIL // ECLIPSE: 13 SEPTEMBER
       </div>
-      <div class="unique-label">
-        — UNIQUE DATE —
-      </div>
-    </div>
-
-    <!-- Footer Ownership Info -->
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h6>SYSTEM OWNER</h6>
-        <p>Disha Rana<br>Sector 25.240<br>Deep Space HQ</p>
-      </div>
-      <div class="footer-col">
-        <h6>SYSTEM CO-OWNER</h6>
-        <p>Ayush Rana<br>T. +0095 5176 6598<br>E. zuxislive@gmail.com</p>
+      <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">
+        System Architect: Disha Rana (Sector 25.240) | Co-Architect: Ayush Rana
       </div>
     </div>
 
   </div>
-
 </body>
 </html>
