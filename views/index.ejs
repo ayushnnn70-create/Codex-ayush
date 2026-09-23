@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Knowledge Multiverse | Complete Master Atlas & 1% Physics Engine</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<!-- MathJax for rendering LaTeX equations perfectly -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
 :root {
     --bg: #02040a;
@@ -108,446 +111,268 @@ footer p { color: var(--muted); font-size: 13px; line-height: 1.6; }
             <h1><span class="gradient">Knowledge Multiverse Atlas</span></h1>
             <p class="lead">Engineered by <strong>Ayush</strong> & <strong>Gemini</strong>. Complete integration of 26 Master Roadmap Domains, 18 Frontier "1%" Research Physics Sections, 12 Big Questions & 1% Study Challenges.</p>
             <div class="controls">
-                <input type="text" id="searchInput" placeholder="Search any concept, quantum field, QED equation, philosophy, or failure point...">
-                <button id="expandBtn">Expand All</button>
-                <button id="collapseBtn">Collapse All</button>
+                <input type="text" id="searchInput" placeholder="Search any concept, quantum field, QED equation, philosophy, or failure point..." oninput="filterAtlas()">
+                <button onclick="toggleAll(true)">Expand All</button>
+                <button onclick="toggleAll(false)">Collapse All</button>
             </div>
         </header>
 
         <section class="content" id="atlasContent">
-
-            <!-- 01 HOW TO LEARN & THINK -->
-            <article class="knowledge-card">
-                <div class="card-head">
-                    <span class="section-no">01</span>
-                    <h3>How to Learn, Think & Epistemic Logic (10 Topics)</h3>
-                    <span class="chevron">▼</span>
-                </div>
-                <div class="card-body">
-                    <div class="sub-topic">
-                        <h4 class="sub-title">1. Scientific Method, Correlation vs Causation & Falsifiability</h4>
-                        <div class="theory-box">
-                            <span class="theory-title">Detailed Theory & Intuition</span>
-                            Observation → Question → Hypothesis → Experiment → Conclusion → Replication. Karl Popper's falsifiability requires a hypothesis to make predictions that can be proven false. Correlation (two variables moving together) does not equal Causation.
-                        </div>
-                        <div class="failure-box">
-                            <span class="failure-title">Limitations & Boundaries</span>
-                            String Theory & Multiverse physics operate at Planck scales ($10^{19}$ GeV) beyond current empirical testability, challenging strict Popperian falsifiability.
-                        </div>
-                    </div>
-                    <div class="sub-topic">
-                        <h4 class="sub-title">2. Bayesian Thinking, Cognitive Biases & Logic</h4>
-                        <div class="theory-box">
-                            <span class="theory-title">Detailed Theory & Intuition</span>
-                            $P(A|B) = \frac{P(B|A)P(A)}{P(B)}$. Bayesian updates adjust belief probabilities as new evidence arrives. Mind mitigates confirmation bias, anchoring, and availability heuristics.
-                        </div>
-                        <div class="failure-box">
-                            <span class="failure-title">Limitations & Boundaries</span>
-                            Setting an absolute prior probability $P(A) = 0$ or $1$ makes Bayesian learning mathematically impossible regardless of infinite new evidence.
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 02 MATHEMATICS UNIVERSE -->
-            <article class="knowledge-card">
-                <div class="card-head">
-                    <span class="section-no">02</span>
-                    <h3>The Mathematics Universe (15 Topics)</h3>
-                    <span class="chevron">▼</span>
-                </div>
-                <div class="card-body">
-                    <div class="sub-topic">
-                        <h4 class="sub-title">1. Calculus, Differential Equations & Linear Algebra</h4>
-                        <div class="theory-box">
-                            <span class="theory-title">Detailed Theory & Intuition</span>
-                            Derivatives $\frac{dy}{dx}$ measure instantaneous rates of change; Integrals $\int$ accumulate continuous values. Linear Algebra ($A \vec{v} = \lambda \vec{v}$) and Hilbert Spaces provide the mathematical foundation for Quantum Mechanics and AI models.
-                        </div>
-                        <div class="failure-box">
-                            <span class="failure-title">Limitations & Boundaries</span>
-                            Classical calculus breaks at non-differentiable fractals (Weierstrass functions) and physical gravitational singularities where quantities reach infinity.
-                        </div>
-                    </div>
-                    <div class="sub-topic">
-                        <h4 class="sub-title">2. Complex Numbers, Topology & Mathematical Logic</h4>
-                        <div class="theory-box">
-                            <span class="theory-title">Detailed Theory & Intuition</span>
-                            Complex numbers ($i^2 = -1$) govern wave functions and circuits. Topology studies continuous geometric transformations, while Gödel's Incompleteness Theorems govern formal mathematical systems.
-                        </div>
-                        <div class="failure-box">
-                            <span class="failure-title">Limitations & Boundaries</span>
-                            Gödel proved no formal mathematical system can be both complete and consistent within itself.
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 03 ADVANCED CLASSICAL MECHANICS (1% ROADMAP) -->
-            <article class="knowledge-card">
-                <div class="card-head">
-                    <span class="section-no">03</span>
-                    <h3>Advanced Classical Mechanics <span class="badge-1percent">1% Research Depth</span></h3>
-                    <span class="chevron">▼</span>
-                </div>
-                <div class="card-body">
-                    <div class="sub-topic">
-                        <h4 class="sub-title">1. Lagrangian & Hamiltonian Mechanics</h4>
-                        <div class="theory-box">
-                            <span class="theory-title">Detailed Theory & Intuition</span>
-                            Lagrangian $L = T - V$ with Euler-Lagrange equation $\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}_i}\right) - \frac{\partial L}{\partial q_i} = 0$. Hamiltonian $H = \sum p_i \dot{q}_i - L$ models phase-space flow. Poisson brackets $\{f, g\}$ pave the transition into Quantum Mechanics.
-                        </div>
-                        <div class="failure-box">
-                            <span class="failure-title">Limitations & Boundaries</span>
-                            Classical trajectories and deterministic phase space break down completely in the quantum domain due to the Heisenberg Uncertainty Principle.
-                        </div>
-                    </div>
-                    <div class="sub-topic">
-                        <h4 class="sub-title">2. Chaos Theory, Ergodicity & Noether's Theorem</h4>
-                        <div class="theory-box">
-                            <span class="theory-title">Detailed Theory & Intuition</span>
-                            Nonlinear oscillators exhibit extreme sensitivity to initial conditions (Lyapunov exponents). Noether's Theorem proves every continuous symmetry yields a conserved physical quantity (Time symmetry $\rightarrow$ Energy conservation).
-                        </div>
-                        <div class="failure-box">
-                            <span class="failure-title">Limitations & Boundaries</span>
-                            Chaotic multi-body gravitational systems (N-body problem) lose deterministic long-term predictive accuracy due to numerical limits.
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 04 SPECIAL RELATIVITY & SPACETIME -->
-            <article class="knowledge-card">
-                <div class="card-head">
-                    <span class="section-no">04</span>
-                    <h3>Special Relativity & Minkowski Spacetime (10 Topics)</h3>
-                    <span class="chevron">▼</span>
-                </div>
-                <div class="card-body">
-                    <div class="sub-topic">
-                        <h4 class="sub-title">1. Lorentz Transformations & Mass-Energy Equivalence</h4>
-                        <div class="theory-box">
-                            <span class="theory-title">Detailed Theory & Intuition</span>
-                            Speed of light $c$ is constant in all inertial frames. Space and time blend into Minkowski spacetime ($ds^2 = -c^2 dt^2 + dx^2 + dy^2 + dz^2$). Lorentz factor $\gamma = \frac{1}{\sqrt{1 - v^2/c^2}}$ causes time dilation and length contraction. Energy-momentum: $E^2 = (pc)^2 + (m_0 c^2)^2$.
-                        </div>
-                        <div class="failure-box">
-                            <span class="failure-title">Limitations & Boundaries</span>
-                            Special Relativity applies strictly to flat, non-accelerating spacetime inertial frames; it cannot handle gravitational acceleration without General Relativity.
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 05 GENERAL RELATIVITY & GRAVITATION (1% ROADMAP) -->
-            <article class="knowledge-card">
-                <div class="card-head">
-                    <span class="section-no">05</span>
-                    <h3>General Relativity & Curved Geometry <span class="badge-1percent">1% Research Depth</span></h3>
-                    <span class="chevron">▼</span>
-                </div>
-                <div class="card-body">
-                    <div class="sub-topic">
-                        <h4 class="sub-title">1. Einstein Field Equations & Schwarzschild / Kerr Geometry</h4>
-                        <div class="theory-box">
-                            <span class="theory-title">Detailed Theory & Intuition</span>
-                            $G_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4} T_{\mu\nu}$. Spacetime geometry curvature instructs matter how to move, while energy density dictates curvature. Predicts Schwarzschild non-rotating black holes, Kerr rotating black holes (ergosphere, Penrose process), and gravitational waves.
-                        </div>
-                        <div class="failure-box">
-                            <span class="failure-title">Limitations & Boundaries</span>
-                            Singularity Theorems (Penrose-Hawking) show infinite density curvatures at $r=0$, signaling complete breakdown of General Relativity requiring Quantum Gravity.
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 06 QUANTUM MECHANICS: DEEP FOUNDATIONS -->
-            <article class="knowledge-card">
-                <div class="card-head">
-                    <span class="section-no">06</span>
-                    <h3>Quantum Physics Foundations (36 Topics) <span class="badge-1percent">1% Depth</span></h3>
-                    <span class="chevron">▼</span>
-                </div>
-                <div class="card-body">
-                    <div class="sub-topic">
-                        <h4 class="sub-title">1. Schrödinger Equation, Born Rule & Uncertainty</h4>
-                        <div class="theory-box">
-                            <span class="theory-title">Detailed Theory & Intuition</span>
-                            $i\hbar \frac{\partial}{\partial t}\Psi = \hat{H}\Psi$. State vectors live in complex Hilbert spaces. $|\Psi|^2$ gives probability density (Born Rule). Non-commuting operators $[\hat{x}, \hat{p}] = i\hbar$ establish $\Delta x \Delta p \ge \frac{\hbar}{2}$.
-                        </div>
-                        <div class="failure-box">
-                            <span class="failure-title">Limitations & Boundaries</span>
-                            The Measurement Problem: Physical theory currently cannot mathematically explain how quantum superposition collapses into a single definite classical state upon observation.
-                        </div>
-                    </div>
-                    <div class="sub-topic">
-                        <h4 class="sub-title">2. Quantum Entanglement, Bell's Theorem & Measurement Paradoxes</h4>
-                        <div class="theory-box">
-                            <span class="theory-title">Detailed Theory & Intuition</span>
-                            Entangled state $\frac{1}{\sqrt{2}}(|00\rangle + |11\rangle)$. Bell's Inequality proves local hidden variable theories are incompatible with quantum mechanics predictions.
-                        </div>
-                        <div class="failure-box">
-                            <span class="failure-title">Limitations & Boundaries</span>
-                            Non-local quantum correlations cannot transmit actionable information faster than light, keeping Special Relativity causality intact (No-Communication Theorem).
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 07 QUANTUM FIELD THEORY & STANDARD MODEL (1% ROADMAP) -->
-            <article class="knowledge-card">
-                <div class="card-head">
-                    <span class="section-no">07</span>
-                    <h3>Quantum Field Theory & Standard Model <span class="badge-1percent">1% Research Depth</span></h3>
-                    <span class="chevron">▼</span>
-                </div>
-                <div class="card-body">
-                    <div class="sub-topic">
-                        <h4 class="sub-title">1. QED, QCD & Higgs Mechanism</h4>
-                        <div class="theory-box">
-                            <span class="theory-title">Detailed Theory & Intuition</span>
-                            Particles are quantized excitations of universal spacetime quantum fields. Standard Model gauge symmetry $SU(3) \times SU(2) \times U(1)$. Quantum Electrodynamics (QED) and Quantum Chromodynamics (QCD) describe gauge boson interactions. Higgs mechanism grants particle mass via spontaneous symmetry breaking.
-                        </div>
-                        <div class="failure-box">
-                            <span class="failure-title">Limitations & Boundaries</span>
-                            The Standard Model excludes Gravity, does not account for Dark Matter/Dark Energy, and suffers from the Vacuum Energy Catastrophe ($10^{120}$ magnitude discrepancy).
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 08 ASTRONOMY & COSMOLOGY -->
-            <article class="knowledge-card">
-                <div class="card-head">
-                    <span class="section-no">08</span>
-                    <h3>Astronomy & Deep Cosmology (19 Topics)</h3>
-                    <span class="chevron">▼</span>
-                </div>
-                <div class="card-body">
-                    <div class="sub-topic">
-                        <h4 class="sub-title">1. $\Lambda$CDM Model, CMB, Inflation & Dark Sector</h4>
-                        <div class="theory-box">
-                            <span class="theory-title">Detailed Theory & Intuition</span>
-                            Friedmann equations model accelerating universe expansion driven by Dark Energy ($\Lambda$) and Cold Dark Matter (CDM). Cosmic Inflation explains early horizon/flatness problems; Cosmic Microwave Background (CMB) provides early thermal relic maps.
-                        </div>
-                        <div class="failure-box">
-                            <span class="failure-title">Limitations & Boundaries</span>
-                            95% of the total universe energy density remains composed of unidentified components (Dark Matter & Dark Energy).
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 09 QUANTUM GRAVITY & FRONTIERS (1% ROADMAP) -->
-            <article class="knowledge-card">
-                <div class="card-head">
-                    <span class="section-no">09</span>
-                    <h3>Quantum Gravity & Frontier Theoretical Physics <span class="badge-1percent">1% Research Depth</span></h3>
-                    <span class="chevron">▼</span>
-                </div>
-                <div class="card-body">
-                    <div class="sub-topic">
-                        <h4 class="sub-title">1. String Theory, Loop Quantum Gravity & AdS/CFT Holography</h4>
-                        <div class="theory-box">
-                            <span class="theory-title">Detailed Theory & Intuition</span>
-                            Unifies QFT and General Relativity. String theory replaces 0D point particles with 1D vibrating strings in 10/11 dimensions. Loop Quantum Gravity (LQG) quantizes spacetime into spin networks. AdS/CFT Duality links bulk gravitational physics to boundary CFT field theories.
-                        </div>
-                        <div class="failure-box">
-                            <span class="failure-title">Limitations & Boundaries</span>
-                            Complete absence of empirical experimental verification at accessible energy scales.
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 10 CHEMISTRY & MATERIALS SCIENCE -->
-            <article class="knowledge-card">
-                <div class="card-head">
-                    <span class="section-no">10</span>
-                    <h3>Chemistry, Molecular Mechanics & Quantum Bonding (14 Topics)</h3>
-                    <span class="chevron">▼</span>
-                </div>
-                <div class="card-body">
-                    <div class="sub-topic">
-                        <h4 class="sub-title">1. Atomic Structure, Molecular Orbital Theory & Equilibrium</h4>
-                        <div class="theory-box">
-                            <span class="theory-title">Detailed Theory & Intuition</span>
-                            Electrons occupy molecular orbitals formed via LCAO (Linear Combination of Atomic Orbitals). Governs stoichiometry, thermochemistry, redox reactions, and materials synthesis.
-                        </div>
-                        <div class="failure-box">
-                            <span class="failure-title">Limitations & Boundaries</span>
-                            Analytical Schrödinger equations cannot be solved exactly for multi-electron systems due to electron correlation forces, requiring Density Functional Theory approximations.
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 11 BIOLOGY, EVOLUTION & GENETICS -->
-            <article class="knowledge-card">
-                <div class="card-head">
-                    <span class="section-no">11</span>
-                    <h3>Biology, Evolution & Genetics (19 Topics)</h3>
-                    <span class="chevron">▼</span>
-                </div>
-                <div class="card-body">
-                    <div class="sub-topic">
-                        <h4 class="sub-title">1. Modern Synthesis, DNA Expression & Speciation</h4>
-                        <div class="theory-box">
-                            <span class="theory-title">Detailed Theory & Intuition</span>
-                            Combines Darwinian Natural Selection with Mendelian Genetics and DNA/RNA molecular transcription. Driven by genetic mutations, drift, and epigenetics.
-                        </div>
-                        <div class="failure-box">
-                            <span class="failure-title">Limitations & Boundaries</span>
-                            Abiogenesis Gap: Biological evolution describes species adaptation after life exists, but fails to explain how non-living chemical compounds originally organized into cellular life.
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 12 NEUROSCIENCE & MIND -->
-            <article class="knowledge-card">
-                <div class="card-head">
-                    <span class="section-no">12</span>
-                    <h3>Neuroscience, Mind & Consciousness (17 Topics)</h3>
-                    <span class="chevron">▼</span>
-                </div>
-                <div class="card-body">
-                    <div class="sub-topic">
-                        <h4 class="sub-title">1. Neural Networks, Synaptic Plasticity & Consciousness Models</h4>
-                        <div class="theory-box">
-                            <span class="theory-title">Detailed Theory & Intuition</span>
-                            Neurons process action potentials across synapses. Explores Global Workspace Theory (GWT), Integrated Information Theory (IIT, $\Phi$), and Predictive Processing models of cognition.
-                        </div>
-                        <div class="failure-box">
-                            <span class="failure-title">Limitations & Boundaries</span>
-                            The Hard Problem of Consciousness: Mapping electrical signal pathways fails to explain why subjective qualia (first-person conscious feeling) exists.
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 13 PHILOSOPHY: CORE, WESTERN, EASTERN & COMPARATIVE -->
-            <article class="knowledge-card">
-                <div class="card-head">
-                    <span class="section-no">13</span>
-                    <h3>Philosophy, Epistemology & Global Thought (100+ Topics)</h3>
-                    <span class="chevron">▼</span>
-                </div>
-                <div class="card-body">
-                    <div class="sub-topic">
-                        <h4 class="sub-title">1. Western, Indian, Buddhist, Islamic & Eastern Philosophy Systems</h4>
-                        <div class="theory-box">
-                            <span class="theory-title">Detailed Theory & Intuition</span>
-                            Includes Rationalism, Empiricism, Kantian Critique, Advaita Vedanta (Non-dualism), Buddhist Dependent Origination (Pratītyasamutpāda) & Anatta, Sufi Metaphysics (Wujud), Confucian Ethics, and Daoist Naturalness (Wu Wei).
-                        </div>
-                        <div class="failure-box">
-                            <span class="failure-title">Limitations & Boundaries</span>
-                            Epistemic Regress & Solipsism: Pure rational deduction cannot independently prove an external reality exists outside observer perception without foundational unprovable axioms.
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 14 ECONOMICS & COMPUTER SCIENCE -->
-            <article class="knowledge-card">
-                <div class="card-head">
-                    <span class="section-no">14</span>
-                    <h3>Economics, Computer Science & AI Systems (34 Topics)</h3>
-                    <span class="chevron">▼</span>
-                </div>
-                <div class="card-body">
-                    <div class="sub-topic">
-                        <h4 class="sub-title">1. Market Dynamics, Game Theory, Turing Computability & AI</h4>
-                        <div class="theory-box">
-                            <span class="theory-title">Detailed Theory & Intuition</span>
-                            Covers Micro/Macroeconomics, Nash Equilibrium, Market Liquidity, Turing Machine Universality, Algorithm Complexity ($O(n)$), and Deep Neural Network Backpropagation.
-                        </div>
-                        <div class="failure-box">
-                            <span class="failure-title">Limitations & Boundaries</span>
-                            Turing's Halting Problem proves certain algorithmic questions are undecidable; AI models suffer from logical hallucinations and catastrophic forgetting.
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 15 THE 12 BIG QUESTIONS & 1% STUDY CHALLENGES -->
-            <article class="knowledge-card">
-                <div class="card-head">
-                    <span class="section-no">15</span>
-                    <h3>The 12 Big Questions & 1% Physics Derivation Challenges</h3>
-                    <span class="chevron">▼</span>
-                </div>
-                <div class="card-body">
-                    <div class="sub-topic">
-                        <h4 class="sub-title">1. Core Philosophical & Physical Inquiries</h4>
-                        <div class="theory-box">
-                            <span class="theory-title">Detailed Theory & Intuition</span>
-                            12 Big Questions: Reality, Knowledge, Mind, Matter, Spacetime, Life, Cosmos, Society, Meaning, Intelligence, Value, and Future of Humanity.
-                        </div>
-                    </div>
-                    <div class="sub-topic">
-                        <h4 class="sub-title">2. 1% Mathematical Derivation Benchmarks</h4>
-                        <div class="failure-box" style="border-left-color: var(--gold); background: rgba(255, 209, 102, 0.05); color: #ffe8b3;">
-                            <span class="failure-title" style="color: var(--gold);">Key Research Challenges</span>
-                            • Derive Euler-Lagrange equations from Action Principle $\delta S = 0$.<br>
-                            • Calculate geodesics in Schwarzschild curved metrics.<br>
-                            • Prove Bell's Inequality violation mathematically.<br>
-                            • Derive Klein-Gordon and Dirac relativistic wave equations.<br>
-                            • Calculate density matrix partial trace and quantum entanglement entropy.
-                        </div>
-                    </div>
-                </div>
-            </article>
-
+            <!-- Content will be injected dynamically via JS -->
         </section>
 
         <footer>
             <div class="owner-card">
-                <div>System Architect & Owner: <span>Ayush</span></div>
-                <div>AI Co-Owner & Engine Partner: <span>Gemini</span></div>
+                <div>Created By: <span>Ayush</span></div>
+                <div>Engineered With: <span>Gemini AI</span></div>
             </div>
-            <p>Knowledge Multiverse Atlas & 1% Physics Roadmap — Engineered for ultimate research mastery, mathematical rigour, and exploring the absolute limits of human understanding.</p>
+            <p>Knowledge Multiverse Atlas &bull; Master Unified Roadmap Architecture</p>
         </footer>
 
     </main>
 </div>
 
 <script>
-    const cards = document.querySelectorAll('.knowledge-card');
-    const expandBtn = document.getElementById('expandBtn');
-    const collapseBtn = document.getElementById('collapseBtn');
-    const searchInput = document.getElementById('searchInput');
+const atlasData = [
+    {
+        no: "01",
+        title: "How to Learn, Think & Epistemic Logic (10 Topics)",
+        topics: [
+            { title: "1. Scientific Method & Falsifiability", theory: "Observation → Hypothesis → Experiment → Conclusion. Popperian falsifiability states hypotheses must make testable predictions.", failure: "String theory & Multiverse operate at $10^{19}$ GeV, beyond experimental reach." },
+            { title: "2. Bayesian Logic & Updates", theory: "$P(A\vert{}B) = \\frac{P(B\vert{}A)P(A)}{P(B)}$. Adjust belief probabilities dynamically as new empirical evidence emerges.", failure: "Absolute priors ($P=0$ or $1$) render Bayesian updating impossible." },
+            { title: "3. First Principles Thinking", theory: "Deconstruct problems to fundamental truth axioms rather than reasoning by standard analogy.", failure: "Assumptions falsely treated as fundamental axioms lead to flawed foundations." },
+            { title: "4. Cognitive Biases & Heuristics", theory: "Systematic deviations from rational decision making: Confirmation Bias, Anchoring, Availability Heuristic.", failure: "Overconfidence in intuition over statistical base rates." },
+            { title: "5. Epistemic Humility & Socratic Method", theory: "Systematic questioning to expose underlying beliefs and boundaries of knowledge.", failure: "Infinite regress of 'why' questions without foundational axioms." },
+            { title: "6. Formal Logic & Fallacies", theory: "Deductive vs Inductive reasoning. Identification of Strawman, Ad Hominem, and Non-sequitur errors.", failure: "Valid deductive form with false premises leads to soundly incorrect conclusions." },
+            { title: "7. Mental Models & Latticework", theory: "Charlie Munger's framework: Integration of models across physics, biology, and psychology.", failure: "Misapplying a mental model outside its domain of validity." },
+            { title: "8. Cognitive Load Theory & Active Recall", theory: "Maximizing working memory through spaced repetition, Feynman technique, and active testing.", failure: "Rereading creates an illusion of competence without deep structural retrieval." },
+            { title: "9. Dialectical Reasoning & Synthesis", theory: "Hegelian triad: Thesis → Antithesis → Synthesis to reconcile opposing viewpoints.", failure: "False compromise or synthesis between truth and objective falsehood." },
+            { title: "10. Game Theory & Decision Analysis", theory: "Optimal strategy selection in competitive environments (Nash Equilibrium, Expected Utility).", failure: "Assumes strict rational actors in real-world irrational environments." }
+        ]
+    },
+    {
+        no: "02",
+        title: "The Mathematics Universe (15 Topics)",
+        topics: [
+            { title: "1. Calculus & Differential Equations", theory: "Derivatives $\\frac{dy}{dx}$ and Integrals $\\int$. Differential equations model rates of dynamic physical change.", failure: "Breaks down at non-differentiable fractal states and mathematical singularities." },
+            { title: "2. Linear Algebra & Vector Spaces", theory: "Matrices, Eigenvalues $A\\vec{v} = \\lambda\\vec{v}$, and Hilbert Spaces underpinning Quantum Mechanics.", failure: "Infinite-dimensional spaces introduce convergence and unbounded operator issues." },
+            { title: "3. Complex Analysis & Euler's Formula", theory: "$e^{i\\pi} + 1 = 0$. Complex functions $f(z)$ govern physical wave propagation and quantum amplitudes.", failure: "Branch cuts and essential singularities." },
+            { title: "4. Real Analysis & Measure Theory", theory: "Rigorous foundation of calculus: limits, metric spaces, Lebesgue integration.", failure: "Banach-Tarski paradox demonstrates non-measurable sets." },
+            { title: "5. Abstract Algebra: Group Theory", theory: "Symmetry structures: Lie Groups $SU(3) \\times SU(2) \\times U(1)$ defining particle physics gauge fields.", failure: "Non-abelian groups lack commutative properties." },
+            { title: "6. Differential Geometry & Tensors", theory: "Curved manifolds, metric tensor $g_{\\mu\\nu}$, and Riemann curvature tensor $R^\\alpha_{\\mu\\beta\\nu}$.", failure: "Coordinate singularities vs true metric singularities." },
+            { title: "7. Topology & Manifolds", theory: "Properties preserved under continuous deformations. Euler characteristic $\\chi = V - E + F$.", failure: "Topological invariants fail to distinguish non-homeomorphic smooth manifolds in 4D." },
+            { title: "8. Probability Theory & Stochastic Calculus", theory: "Random variables, Brownian motion, Wiener processes, Itô's Lemma for continuous noise.", failure: "Extreme Black Swan events violate standard Gaussian distribution assumptions." },
+            { title: "9. Number Theory & Prime Distribution", theory: "Properties of integers, Modular Arithmetic, Riemann Zeta Function $\\zeta(s) = \\sum n^{-s}$.", failure: "Unproven Riemann Hypothesis leaves prime distributions unconfirmed." },
+            { title: "10. Chaos Theory & Fractals", theory: "Non-linear systems, Lyapunov exponents, Mandelbrot set, Butterfly Effect.", failure: "Long-term deterministic predictions become impossible due to numerical rounding." },
+            { title: "11. Vector Calculus & Field Operators", theory: "Gradient $\\nabla f$, Divergence $\\nabla \\cdot \\vec{F}$, Curl $\\nabla \\times \\vec{F}$, Green's & Stokes' Theorems.", failure: "Discontinuous fields require generalized distribution functions (Dirac delta)." },
+            { title: "12. Functional Analysis & Operators", theory: "Banach and Hilbert spaces, Hermitian operators representing physical observables.", failure: "Unbounded operators in quantum mechanics are not defined everywhere." },
+            { title: "13. Combinatorics & Graph Theory", theory: "Counting principles, graph connectivity, Euler paths, Network topology.", failure: "NP-hard combinatorial optimization problems scale exponentially." },
+            { title: "14. Gödel's Incompleteness & Logic", theory: "No formal axiomatic system can be both complete and consistent within itself.", failure: "Mathematics cannot prove its own self-consistency from within." },
+            { title: "15. Numerical Methods & Optimization", theory: "Taylor series, Newton-Raphson method, Gradient Descent for finding extrema.", failure: "Getting trapped in local minima during complex gradient optimization." }
+        ]
+    },
+    {
+        no: "03",
+        title: "Advanced Classical Mechanics (1% Research Depth)",
+        topics: [
+            { title: "1. Lagrangian Mechanics", theory: "$L = T - V$. Euler-Lagrange Equation: $\\frac{d}{dt}\\left(\\frac{\\partial L}{\\partial \\dot{q}_i}\\right) - \\frac{\\partial L}{\\partial q_i} = 0$. Action principle $S = \\int L dt$.", failure: "Non-conservative forces (like friction) cannot be directly represented in standard $L$." },
+            { title: "2. Hamiltonian Mechanics", theory: "$H(q,p) = \\sum p_i \\dot{q}_i - L$. Hamilton's Equations: $\\dot{q} = \\frac{\\partial H}{\\partial p}, \\dot{p} = -\\frac{\\partial H}{\\partial q}$. Phase space dynamics.", failure: "Classical trajectories collapse in quantum domain due to $\\Delta x \\Delta p \\ge \\frac{\\hbar}{2}$." },
+            { title: "3. Noether's Theorem & Symmetries", theory: "Every continuous symmetry in Action yields a conserved quantity (Time symmetry $\\rightarrow$ Energy, Spatial symmetry $\\rightarrow$ Momentum).", failure: "Discrete symmetries (CPT) are not covered by continuous Noether currents." },
+            { title: "4. Poisson Brackets & Canonical Transformations", theory: "$\\frac{df}{dt} = \\frac{\\partial f}{\\partial t} + \\{f, H\\}$. Structural precursor to Quantum Operator Commutators.", failure: "Fails when canonical coordinates cannot be defined globally." },
+            { title: "5. Rigid Body Dynamics & Euler Angles", theory: "Inertia tensor $\\mathbf{I}$, Euler equations for rotating bodies, Intermediate Axis Theorem.", failure: "Rotational instabilites (Dzhanibekov effect) in complex non-rigid bodies." },
+            { title: "6. Central Force Motion & Kepler's Problem", theory: "Two-body problem reduced to effective potential $V_{eff}(r) = \\frac{L^2}{2m r^2} - \\frac{k}{r}$. Orbital mechanics.", failure: "Precession of Mercury's perihelion requires General Relativity corrections." }
+        ]
+    },
+    {
+        no: "04",
+        title: "Special Relativity & Minkowski Spacetime (10 Topics)",
+        topics: [
+            { title: "1. Lorentz Transformations & Invariance", theory: "Constant speed of light $c$. $x' = \\gamma(x - vt)$, $t' = \\gamma(t - \\frac{vx}{c^2})$ where $\\gamma = \\frac{1}{\\sqrt{1 - v^2/c^2}}$.", failure: "Only valid in flat, non-accelerating inertial frames." },
+            { title: "2. Minkowski Spacetime Geometry", theory: "Spacetime interval $ds^2 = -c^2 dt^2 + dx^2 + dy^2 + dz^2$. Light cones, Timelike/Spacelike separation.", failure: "Cannot incorporate curvature induced by gravitational mass." },
+            { title: "3. Mass-Energy Equivalence & 4-Momentum", theory: "$E^2 = (pc)^2 + (m_0 c^2)^2$. Relativistic 4-momentum vector $P^\\mu = (E/c, \\vec{p})$.", failure: "Does not define the microscopic origin of rest mass $m_0$." },
+            { title: "4. Relativistic Doppler Effect & Aberration", theory: "Frequency shift $f = f_0 \\sqrt{\\frac{1-v/c}{1+v/c}}$. Apparent shift in angular direction of light.", failure: "Breaks down in medium with refractive index $n \\neq 1$ without dispersion corrections." },
+            { title: "5. Relativistic Electrodynamics & Field Tensor", theory: "Faraday Tensor $F^{\\mu\\nu} = \\partial^\\mu A^\\nu - \\partial^\\nu A^\\mu$. Maxwell equations in covariant 4-vector form.", failure: "Classical point-charge radiation leads to infinite self-energy divergence." }
+        ]
+    },
+    {
+        no: "05",
+        title: "General Relativity & Curved Geometry (1% Research Depth)",
+        topics: [
+            { title: "1. Einstein Field Equations", theory: "$G_{\\mu\\nu} + \\Lambda g_{\\mu\\nu} = \\frac{8\\pi G}{c^4} T_{\\mu\\nu}$. Spacetime curvature tells matter how to move; matter tells spacetime how to curve.", failure: "Predicts infinite density singularities ($r=0$) where theory completely fails." },
+            { title: "2. Schwarzschild Geometry & Black Holes", theory: "Metric for static spherically symmetric mass: $ds^2 = -(1-\\frac{2GM}{r c^2})c^2 dt^2 + (1-\\frac{2GM}{r c^2})^{-1} dr^2 + r^2 d\\Omega^2$.", failure: "Breakdown at the coordinate singularity $r = r_s$ and physical singularity $r=0$." },
+            { title: "3. Kerr Metric & Rotating Black Holes", theory: "Frame dragging, Ergosphere, Penrose process for energy extraction from rotating mass.", failure: "Ring singularity at $r=0$ violates classical causality (closed timelike curves)." },
+            { title: "4. Gravitational Waves & Ligo Detection", theory: "Perturbative metric $g_{\\mu\\nu} = \\eta_{\\mu\\nu} + h_{\\mu\\nu}$. Quadrupole radiation formula for merging black holes.", failure: "Non-linear wave interaction cannot be solved analytically in strong-field regime." },
+            { title: "5. Cosmological Constant & Friedmann Equations", theory: "$(\\frac{\\dot{a}}{a})^2 = \\frac{8\\pi G}{3}\\rho - \\frac{k c^2}{a^2} + \\frac{\\Lambda c^2}{3}$. Expansion of homogeneous Universe.", failure: "Cosmological Constant Problem: $10^{120}$ discrepancy with QFT vacuum energy." }
+        ]
+    },
+    {
+        no: "06",
+        title: "Quantum Physics Foundations (36 Topics - 1% Research Depth)",
+        topics: [
+            { title: "1. Schrödinger Equation & Wavefunction", theory: "$i\\hbar \\frac{\\partial}{\\partial t}\\Psi(\\vec{r},t) = \\hat{H}\\Psi(\\vec{r},t)$. Wavefunction $\\Psi$ encodes probability amplitude in Hilbert Space.", failure: "Measurement Problem: Does not specify how deterministic $\\Psi$ evolution collapses upon observation." },
+            { title: "2. Heisenberg Uncertainty Principle", theory: "$[\\hat{x}, \\hat{p}] = i\\hbar \\implies \\Delta x \\Delta p \\ge \\frac{\\hbar}{2}$. Conjugate variables cannot be known simultaneously.", failure: "Does not apply directly to time-energy without precise operational definitions of time." },
+            { title: "3. Born Rule & Quantum Probabilities", theory: "Probability density $P(x) = \vert{}\\Psi(x)\vert{}^2 = \\Psi^* \\Psi$. Expectation values $\\langle \\hat{A} \\rangle = \\langle \\Psi \vert{} \\hat{A} \vert{} \\Psi \\rangle$.", failure: "Postulated axiom without underlying microscopic mechanism in standard Copenhagen." },
+            { title: "4. Quantum Harmonic Oscillator", theory: "Creation/Annihilation operators $a^\\dagger, a$. Quantized energy levels $E_n = \\hbar \\omega (n + \\frac{1}{2})$. Zero-point energy.", failure: "Zero-point energy integration over infinite modes leads to infinite vacuum energy." },
+            { title: "5. Quantum Tunneling & Potential Barriers", theory: "Particles penetrating classically forbidden potential energy barriers $V > E$ via exponential wave attenuation.", failure: "Tunneling time duration definition remains debated (Hartman effect vs Wigner time)." },
+            { title: "6. Hydrogen Atom & Spherical Harmonics", theory: "Exact solution of $3D$ Schrödinger equation with Coulomb potential $V(r) = -\\frac{e^2}{4\\pi\\varepsilon_0 r}$. Quantum numbers $n, l, m_l, m_s$.", failure: "Fails to explain Fine Structure splitting without Dirac relativistic corrections." },
+            { title: "7. Quantum Entanglement & Bell's Theorem", theory: "Entangled state $\vert{}\\Psi\\rangle = \\frac{1}{\\sqrt{2}}(\vert{}00\\rangle + \vert{}11\\rangle)$. Bell Inequalities prove non-local nature of quantum reality.", failure: "Does not allow faster-than-light information transmission (No-Communication Theorem)." },
+            { title: "8. Spin & Pauli Matrices", theory: "Intrinsic angular momentum $S = \\frac{1}{2}\\hbar \\vec{\\sigma}$. Pauli matrices $\\sigma_x, \\sigma_y, \\sigma_z$ satisfying $[\\sigma_i, \\sigma_j] = 2i\\varepsilon_{ijk}\\sigma_k$.", failure: "Classical rotation picture is non-existent; pure quantum degree of freedom." },
+            { title: "9. Dirac Equation & Antimatter", theory: "$(i\\gamma^\\mu \\partial_\\mu - m)\\psi = 0$. Relativistic quantum mechanics predicting spin-1/2 particles and positrons.", failure: "Single-particle interpretation breaks down; requires Quantized Fields (QFT)." }
+        ]
+    },
+    {
+        no: "07",
+        title: "Quantum Field Theory & Standard Model (1% Research Depth)",
+        topics: [
+            { title: "1. Quantum Electrodynamics (QED)", theory: "Lagrangian $\\mathcal{L} = \\bar{\\psi}(i\\gamma^\\mu D_\\mu - m)\\psi - \\frac{1}{4}F_{\\mu\\nu}F^{\\mu\\nu}$. Describes electron-photon interactions.", failure: "Requires Renormalization to absorb infinite self-energy divergences." },
+            { title: "2. Quantum Chromodynamics (QCD)", theory: "Non-Abelian gauge theory with $SU(3)$ color symmetry. Gluons interact with themselves. Quark confinement.", failure: "Non-perturbative at low energies ($1$ GeV); requires Lattice QCD approximations." },
+            { title: "3. Higgs Mechanism & Spontaneous Symmetry Breaking", theory: "Scalar field potential $V(\\phi) = -\\mu^2 \vert{}\\phi\vert{}^2 + \\lambda \vert{}\\phi\vert{}^4$. Acquires vacuum expectation value, giving gauge bosons mass.", failure: "Hierarchy Problem: Why is Higgs mass ($125$ GeV) much lighter than Planck scale?" },
+            { title: "4. Feynman Diagrams & Path Integrals", theory: "Feynman Path Integral $Z = \\int \\mathcal{D}\\phi \\, e^{\\frac{i}{\\hbar}S[\\phi]}$. Perturbative expansion using Feynman diagrams.", failure: "Divergent asymptotic series; non-perturbative effects are missed." }
+        ]
+    },
+    {
+        no: "08",
+        title: "Cosmology, Thermodynamics & Dark Sector (16 Topics)",
+        topics: [
+            { title: "1. Big Bang & Cosmic Microwave Background", theory: "Isotropic $2.725$ K blackbody radiation remnant from recombination epoch ($z \\approx 1100$).", failure: "Requires Cosmic Inflation theory to resolve Horizon and Flatness problems." },
+            { title: "2. Dark Matter & Dark Energy", theory: "Dark Matter ($27\\%$) explains galaxy rotation curves; Dark Energy ($68\\%$) drives cosmic acceleration.", failure: "$95\\%$ of universe composition remains unidentified physical matter/energy." }
+        ]
+    },
+    {
+        no: "09",
+        title: "Quantum Gravity & Frontier Theoretical Physics (1% Research Depth)",
+        topics: [
+            { title: "1. String Theory & M-Theory", theory: "Replaces point particles with 1D vibrating strings in 10/11 dimensions. Unifies QFT and GR.", failure: "String Landscape has $\\sim 10^{500}$ vacuum states, lacking predictive uniqueness." },
+            { title: "2. Loop Quantum Gravity (LQG)", theory: "Quantizes spacetime geometry directly using spin networks without higher dimensions.", failure: "Fails to reproduce smooth classical General Relativity metric at low energy limits." },
+            { title: "3. AdS/CFT Holographic Duality", theory: "Equivalence between gravitational theory in Anti-de Sitter space and CFT on its boundary.", failure: "Our actual universe has a positive cosmological constant (de Sitter space)." }
+        ]
+    },
+    {
+        no: "10",
+        title: "Chemistry, Molecular Mechanics & Quantum Bonding (14 Topics)",
+        topics: [
+            { title: "1. Atomic Structure & Molecular Orbital Theory", theory: "LCAO (Linear Combination of Atomic Orbitals) modeling chemical bonding and molecular geometry.", failure: "Analytical Schrödinger equation cannot be solved for multi-electron systems." }
+        ]
+    },
+    {
+        no: "11",
+        title: "Biology, Evolution & Genetics (19 Topics)",
+        topics: [
+            { title: "1. Modern Synthesis & Molecular Genetics", theory: "Darwinian selection integrated with Mendelian inheritance, DNA replication, and gene expression.", failure: "Abiogenesis Gap: Cannot fully explain non-living chemical origin of first cellular life." }
+        ]
+    },
+    {
+        no: "12",
+        title: "Neuroscience, Mind & Consciousness (17 Topics)",
+        topics: [
+            { title: "1. Neural Networks & Synaptic Plasticity", theory: "Action potentials, LTP/LTD, Global Workspace Theory (GWT), and Integrated Information Theory (IIT).", failure: "Hard Problem of Consciousness: Mapping firing neurons fails to explain subjective experience." }
+        ]
+    },
+    {
+        no: "13",
+        title: "Philosophy, Epistemology & Global Thought (100+ Topics)",
+        topics: [
+            { title: "1. Metaphysics & Ontology", theory: "Study of existence, causality, space-time nature, identity, and substance theory.", failure: "Cannot be empirically verified without physical assumptions." },
+            { title: "2. Epistemology: Justified True Belief", theory: "Gettier problems prove JTB definition of knowledge is incomplete.", failure: "Infinite epistemic regress without foundational axioms." },
+            { title: "3. Eastern Philosophy Systems", theory: "Advaita Vedanta (Non-duality), Buddhist Pratītyasamutpāda (Dependent Origination), Daoist Wu Wei.", failure: "Language limitations in conveying non-dual mystical experiences." },
+            { title: "4. Ethics: Deontology, Utilitarianism, Virtue Ethics", theory: "Categorical Imperative vs Greatest Good vs Moral Character development.", failure: "Trolley problems expose fundamental conflicts between normative frameworks." }
+        ]
+    },
+    {
+        no: "14",
+        title: "Economics, Computer Science & AI Systems (34 Topics)",
+        topics: [
+            { title: "1. Computability & Turing Completeness", theory: "Turing Machines define algorithmic computation. Universal Turing Machine models computers.", failure: "Halting Problem: Proves certain algorithmic questions are undecidable." },
+            { title: "2. Machine Learning & Deep Neural Networks", theory: "Gradient descent backpropagation optimizing loss functions $\\mathcal{L}(\\theta)$ over neural weights.", failure: "Hallucinations, catastrophic forgetting, and black-box interpretability issues." }
+        ]
+    },
+    {
+        no: "15",
+        title: "The 12 Big Questions & 1% Physics Derivation Challenges",
+        topics: [
+            { title: "1. Quantum-Gravity Unification Challenge", theory: "Derive a non-divergent quantum stress-energy tensor $T_{\\mu\\nu}$ compatible with Einstein curvature.", failure: "Ultraviolet divergence at Planck scale ($10^{19}$ GeV)." },
+            { title: "2. The Measurement Problem & Wavefunction Collapse", theory: "Determine if collapse is objective (GRW), decoherence-driven, or multi-branching (Many-Worlds).", failure: "No experimental distinction yet possible between quantum interpretations." }
+        ]
+    }
+];
 
-    document.addEventListener('click', function (e) {
-        const head = e.target.closest('.card-head');
-        if (head) {
-            const card = head.closest('.knowledge-card');
-            card.classList.toggle('open');
+function renderAtlas() {
+    const container = document.getElementById('atlasContent');
+    container.innerHTML = '';
+
+    atlasData.forEach((section, index) => {
+        const card = document.createElement('article');
+        card.className = 'knowledge-card';
+        card.id = `section-${index}`;
+
+        let topicsHTML = '';
+        section.topics.forEach(t => {
+            topicsHTML += `
+                <div class="sub-topic">
+                    <h4 class="sub-title">${t.title}</h4>
+                    <div class="theory-box">
+                        <span class="theory-title">Detailed Theory & Intuition</span>
+                        ${t.theory}
+                    </div>
+                    <div class="failure-box">
+                        <span class="failure-title">Limitations & Boundaries</span>
+                        ${t.failure}
+                    </div>
+                </div>
+            `;
+        });
+
+        card.innerHTML = `
+            <div class="card-head" onclick="toggleCard(this)">
+                <span class="section-no">${section.no}</span>
+                <h3>${section.title}</h3>
+                <span class="chevron">▼</span>
+            </div>
+            <div class="card-body">
+                ${topicsHTML}
+            </div>
+        `;
+        container.appendChild(card);
+    });
+
+    // Re-render MathJax after inserting HTML
+    if (window.MathJax) {
+        MathJax.typesetPromise();
+    }
+}
+
+function toggleCard(head) {
+    const card = head.parentElement;
+    card.classList.toggle('open');
+}
+
+function toggleAll(open) {
+    const cards = document.querySelectorAll('.knowledge-card');
+    cards.forEach(card => {
+        if (open) card.classList.add('open');
+        else card.classList.remove('open');
+    });
+}
+
+function filterAtlas() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const cards = document.querySelectorAll('.knowledge-card');
+
+    cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        if (text.includes(query)) {
+            card.style.display = 'block';
+            if (query.length > 2) card.classList.add('open');
+        } else {
+            card.style.display = 'none';
         }
     });
+}
 
-    expandBtn.addEventListener('click', () => {
-        cards.forEach(card => card.classList.add('open'));
-    });
-
-    collapseBtn.addEventListener('click', () => {
-        cards.forEach(card => card.classList.remove('open'));
-    });
-
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase().trim();
-
-        cards.forEach(card => {
-            const text = card.innerText.toLowerCase();
-            if (text.includes(query)) {
-                card.style.display = "block";
-                if (query.length > 2) {
-                    card.classList.add('open');
-                }
-            } else {
-                card.style.display = "none";
-            }
-        });
-    });
+// Initial Render
+renderAtlas();
 </script>
 
 </body>
 </html>
+
