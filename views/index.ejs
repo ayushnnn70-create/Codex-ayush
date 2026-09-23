@@ -3,242 +3,551 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Knowledge Multiverse | Learning Atlas</title>
+<title>Knowledge Multiverse | Complete Master Atlas & 1% Physics Engine</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#050912;--panel:rgba(8,13,24,.82);--panel2:rgba(12,19,33,.74);--line:rgba(145,190,255,.18);--text:#eef5ff;--muted:#a8b6c9;--cyan:#73d9ff;--blue:#5b8cff;--purple:#a47cff;}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Inter,system-ui,sans-serif;color:var(--text);min-height:100vh;background:#03050a url('/1000041671_2.jpg') center center/cover fixed no-repeat;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;background:linear-gradient(90deg,rgba(1,5,12,.2),rgba(2,6,16,.62) 45%,rgba(2,5,12,.78));pointer-events:none}
-.shell{position:relative;z-index:1;min-height:100vh;padding:28px;display:flex;justify-content:flex-end}
-.panel{width:min(1120px,76vw);min-height:calc(100vh - 56px);background:linear-gradient(135deg,rgba(5,10,20,.74),rgba(9,15,28,.9));border:1px solid var(--line);box-shadow:-25px 0 80px rgba(0,0,0,.42),0 30px 80px rgba(0,0,0,.35);backdrop-filter:blur(16px);border-radius:4px;overflow:hidden}
-.top{padding:34px 42px 24px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(5,10,20,.76);backdrop-filter:blur(18px);z-index:10}
-nav{display:flex;justify-content:flex-end;gap:25px;margin-bottom:34px;flex-wrap:wrap}
-nav a{color:#b9c6d8;text-decoration:none;font-size:11px;letter-spacing:1.5px;text-transform:uppercase}nav a:hover{color:var(--cyan)}
-.eyebrow{font-size:11px;letter-spacing:3px;color:var(--cyan);text-transform:uppercase;margin-bottom:12px}
-h1{font-family:Manrope,sans-serif;font-size:clamp(2.2rem,5vw,4.6rem);line-height:.98;letter-spacing:-2px;margin-bottom:18px}.gradient{background:linear-gradient(90deg,#fff,var(--cyan),#9c8cff);-webkit-background-clip:text;color:transparent}
-.lead{max-width:760px;color:#c0ccdc;line-height:1.75;font-size:14px}
-.controls{display:flex;gap:10px;margin-top:25px;flex-wrap:wrap}input{flex:1;min-width:220px;background:rgba(0,0,0,.35);border:1px solid var(--line);color:#fff;padding:13px 15px;border-radius:4px;outline:none}input:focus{border-color:rgba(115,217,255,.65)}button{background:rgba(115,217,255,.08);border:1px solid var(--line);color:#dcecff;padding:11px 15px;border-radius:4px;cursor:pointer}button:hover{background:rgba(115,217,255,.16)}
-.stats{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}.stat{font-size:11px;color:#b9c6d8;padding:7px 10px;border:1px solid var(--line);background:rgba(255,255,255,.025)}
-.content{padding:34px 42px 60px}.introbox{padding:20px;border:1px solid var(--line);background:linear-gradient(135deg,rgba(91,140,255,.08),rgba(164,124,255,.06));margin-bottom:30px}.introbox h2{font:700 18px Manrope;margin-bottom:10px}.introbox p{color:var(--muted);line-height:1.7;font-size:14px}
-.divider{margin:45px 0 18px;display:flex;align-items:center;gap:15px}.divider h2{font:700 18px Manrope;letter-spacing:.3px}.divider span{font-size:10px;color:var(--cyan);letter-spacing:2px}
-.knowledge-card{border:1px solid var(--line);background:rgba(5,10,19,.64);margin:12px 0;border-radius:3px;overflow:hidden;transition:.2s}.knowledge-card:hover{border-color:rgba(115,217,255,.34)}.card-head{display:flex;align-items:center;gap:14px;padding:17px 18px;cursor:pointer;background:rgba(255,255,255,.018)}.section-no{font:700 11px Manrope;color:var(--cyan);min-width:32px}.card-head h3{font:700 15px Manrope;flex:1;letter-spacing:.2px}.chevron{color:#8798af;transition:.2s}.knowledge-card.open .chevron{transform:rotate(180deg)}.card-body{display:none;padding:3px 22px 22px;border-top:1px solid rgba(145,190,255,.1)}.knowledge-card.open .card-body{display:block}.card-body p,.card-body li{color:#b6c3d5;font-size:13px;line-height:1.7}.card-body p{margin:10px 0}.card-body ul{padding-left:20px;margin:10px 0}.card-body li{margin:5px 0}.card-body h4{font:600 12px Manrope;color:var(--cyan);letter-spacing:1px;text-transform:uppercase;margin:20px 0 8px}.topic{padding:11px 0;border-bottom:1px solid rgba(145,190,255,.08)}.topic:last-child{border-bottom:0}.topic-name{font-weight:600;font-size:13px;color:#edf5ff;display:flex;gap:10px;align-items:flex-start}.topic-num{font-family:monospace;color:var(--cyan);font-size:11px;min-width:20px}.topic p{margin:5px 0 0 30px}
-footer{padding:25px 42px;border-top:1px solid var(--line);color:#7f8da2;font-size:11px;text-align:center;letter-spacing:.4px}
-.auth{margin-top:22px;padding:15px;border:1px solid var(--line);background:rgba(0,0,0,.25);font-size:12px;color:var(--muted)}.auth strong{color:#fff}.auth a{color:var(--cyan)}
-@media(max-width:900px){.shell{padding:0}.panel{width:100%;border-radius:0;min-height:100vh}.top{padding:25px 20px 20px}.content{padding:25px 20px 45px}footer{padding:22px 20px}nav{justify-content:flex-start}}
+:root {
+    --bg: #02040a;
+    --panel: rgba(7, 12, 23, 0.92);
+    --panel-border: rgba(145, 190, 255, 0.2);
+    --text: #eef5ff;
+    --muted: #a8b6c9;
+    --cyan: #73d9ff;
+    --blue: #5b8cff;
+    --purple: #a47cff;
+    --danger: #ff6b6b;
+    --gold: #ffd166;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: Inter, system-ui, sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    background: radial-gradient(circle at 50% 10%, #0d1a3a 0%, #02040a 100%);
+    overflow-x: hidden;
+}
+
+.stars-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    background-image: 
+        radial-gradient(1.5px 1.5px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 80px 120px, var(--cyan), rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 150px 200px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 220px 310px, var(--purple), rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 300px 300px;
+    opacity: 0.5;
+}
+
+.shell { position: relative; z-index: 1; min-height: 100vh; padding: 25px 15px; display: flex; justify-content: center; }
+.panel { width: min(1200px, 96vw); background: var(--panel); border: 1px solid var(--panel-border); box-shadow: 0 30px 90px rgba(0,0,0,.8); backdrop-filter: blur(20px); border-radius: 12px; overflow: hidden; }
+
+.top { padding: 40px 45px 30px; border-bottom: 1px solid var(--panel-border); background: rgba(4, 8, 18, 0.95); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(15px); }
+.eyebrow { font-size: 11px; letter-spacing: 3px; color: var(--cyan); text-transform: uppercase; margin-bottom: 10px; font-weight: 700; }
+h1 { font-family: Manrope, sans-serif; font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.05; letter-spacing: -1.5px; margin-bottom: 12px; }
+.gradient { background: linear-gradient(90deg, #fff, var(--cyan), var(--purple)); -webkit-background-clip: text; color: transparent; }
+.lead { color: var(--muted); font-size: 14.5px; line-height: 1.7; max-width: 950px; }
+
+.controls { display: flex; gap: 12px; margin-top: 25px; flex-wrap: wrap; }
+input { flex: 2; min-width: 260px; background: rgba(0,0,0,.5); border: 1px solid var(--panel-border); color: #fff; padding: 13px 18px; border-radius: 6px; outline: none; font-size: 14px; }
+input:focus { border-color: var(--cyan); box-shadow: 0 0 12px rgba(115,217,255,.2); }
+button { background: rgba(115,217,255,.08); border: 1px solid var(--panel-border); color: var(--cyan); padding: 12px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; transition: .2s; }
+button:hover { background: rgba(115,217,255,.18); color: #fff; }
+
+.content { padding: 40px 45px 60px; }
+
+.knowledge-card { border: 1px solid var(--panel-border); background: rgba(10, 16, 28, 0.8); margin-bottom: 22px; border-radius: 8px; overflow: hidden; transition: 0.3s; }
+.knowledge-card:hover { border-color: rgba(115, 217, 255, 0.4); }
+.card-head { display: flex; align-items: center; gap: 18px; padding: 22px; cursor: pointer; background: rgba(255,255,255,.02); user-select: none; }
+.section-no { font: 800 13px Manrope; color: var(--cyan); background: rgba(115, 217, 255, 0.12); padding: 6px 12px; border-radius: 4px; border: 1px solid rgba(115,217,255,.2); }
+.card-head h3 { font: 700 19px Manrope; flex: 1; color: #fff; letter-spacing: -0.3px; }
+.chevron { color: var(--muted); font-size: 18px; transition: 0.3s; }
+.knowledge-card.open .chevron { transform: rotate(180deg); color: var(--cyan); }
+
+.card-body { display: none; padding: 30px; border-top: 1px solid var(--panel-border); background: rgba(3, 6, 12, 0.95); }
+.knowledge-card.open .card-body { display: block; }
+
+.sub-topic { margin-bottom: 30px; padding-bottom: 25px; border-bottom: 1px dashed var(--panel-border); }
+.sub-topic:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.sub-title { font-size: 18px; color: var(--cyan); font-family: Manrope; margin-bottom: 12px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+
+.theory-box { background: rgba(91, 140, 255, 0.05); padding: 18px; border-left: 4px solid var(--blue); border-radius: 0 6px 6px 0; margin-bottom: 12px; line-height: 1.8; font-size: 14px; color: #d0deee; }
+.theory-title { font-weight: 700; color: var(--blue); margin-bottom: 4px; display: block; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; }
+
+.failure-box { background: rgba(255, 107, 107, 0.05); padding: 18px; border-left: 4px solid var(--danger); border-radius: 0 6px 6px 0; line-height: 1.8; font-size: 14px; color: #f0c4c4; }
+.failure-title { font-weight: 700; color: var(--danger); margin-bottom: 4px; display: block; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; }
+
+.badge-1percent { background: rgba(255, 209, 102, 0.15); color: var(--gold); border: 1px solid rgba(255, 209, 102, 0.4); font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: 700; font-family: Manrope; }
+
+footer { padding: 40px; border-top: 1px solid var(--panel-border); background: rgba(2,4,10,.98); text-align: center; }
+.owner-card { display: flex; justify-content: center; gap: 40px; font-family: Manrope; font-size: 16px; margin-bottom: 15px; flex-wrap: wrap; }
+.owner-card div span { color: var(--cyan); font-weight: 800; text-shadow: 0 0 10px rgba(115,217,255,.3); }
+footer p { color: var(--muted); font-size: 13px; line-height: 1.6; }
+
+@media(max-width: 768px) {
+    .top, .content, footer { padding: 25px 20px; }
+    .card-body { padding: 20px 15px; }
+}
 </style>
 </head>
 <body>
-<div class="shell"><main class="panel">
-<header class="top">
-<nav><a href="#master">Master Roadmap</a><a href="#advanced">1% Physics</a><a href="#challenges">Challenges</a></nav>
-<div class="eyebrow">Knowledge Atlas // Deep Learning System</div>
-<h1><span class="gradient">Knowledge<br>Multiverse</span></h1>
-<p class="lead">A connected learning map built from the two supplied roadmaps. Every listed field, topic, explanation, self-test, progression step and frontier question is kept inside the atlas.</p>
-<div class="controls"><input id="search" type="search" placeholder="Search any topic, concept or field..."><button id="expand">Expand all</button><button id="collapse">Collapse all</button></div>
-<div class="stats"><span class="stat">MASTER: 26 sections</span><span class="stat">ADVANCED PHYSICS: 18 sections</span><span class="stat">SOURCE CONTENT PRESERVED</span></div>
-<% if (typeof user !== 'undefined' && user) { %><div class="auth">Observer: <strong><%= user.displayName %></strong> &nbsp; <a href="/logout">Disconnect</a></div><% } %>
-</header>
-<section class="content">
-<div class="introbox"><h2>How to use this atlas</h2><p>Har topic ko simple definition → intuition/example → evidence/equations → open questions/limitations ke order mein samjho. Difficult topics ko prerequisites ke baad kholo. Sirf terms yaad karna goal nahi hai; concepts ke beech connections samajhna goal hai.</p></div>
-<div id="master" class="divider"><span>01</span><h2>MASTER KNOWLEDGE ROADMAP</h2></div>
-<article class="knowledge-card" id="master-0">
-          <div class="card-head"><span class="section-no">START</span><h3>Introduction &amp; Study Framework</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>THE KNOWLEDGE MULTIVERSE</p><p>Master Roadmap — Science, Philosophy, Mind, Society, Technology &amp; Beyond</p><p>Purpose: Yeh PDF ek encyclopedia nahi hai. Yeh ek connected knowledge map hai: har heading tumhe batati hai ki</p><p>kya padhna hai, aur short explanation batata hai ki concept ka core kya hai.</p><p>Study rule: Har topic ko 4 steps mein padho — (1) simple definition, (2) example/intuition, (3) evidence/equations,</p><p>(4) open questions &amp; limitations.</p><h4>MASTER INDEX</h4><p>#      Field                                                                             Topics</p><p>1      HOW TO LEARN &amp; THINK                                                              10</p><p>2      MATHEMATICS UNIVERSE                                                              15</p><p>3      CLASSICAL PHYSICS                                                                 17</p><p>4      RELATIVITY &amp; SPACETIME                                                            10</p><p>5      QUANTUM UNIVERSE                                                                  36</p><p>6      ASTRONOMY &amp; COSMOLOGY                                                             19</p><p>7      CHEMISTRY                                                                         14</p><p>8      BIOLOGY, EVOLUTION &amp; GENETICS                                                     19</p><p>9      EARTH, CLIMATE &amp; ENVIRONMENT                                                      14</p><p>10     NEUROSCIENCE, MIND &amp; CONSCIOUSNESS                                                17</p><p>11     CORE PHILOSOPHY                                                                   16</p><p>12     WESTERN PHILOSOPHY                                                                24</p><p>13     INDIAN PHILOSOPHY                                                                 13</p><p>14     BUDDHIST &amp; JAIN PHILOSOPHY                                                        14</p><p>15     ISLAMIC, PERSIAN &amp; SUFI THOUGHT                                                   13</p><p>16     CHINESE &amp; JAPANESE PHILOSOPHY                                                     10</p><p>17     SOCIAL &amp; POLITICAL PHILOSOPHY                                                     11</p><p>18     ECONOMICS &amp; FINANCE                                                               15</p><p>19     COMPUTER SCIENCE &amp; INFORMATION                                                    19</p><p>20     ENGINEERING &amp; TECHNOLOGY                                                          13</p><p>21     HISTORY &amp; CIVILIZATIONS                                                           18</p><p>22     LANGUAGE, LITERATURE &amp; ARTS                                                       17</p><p>23     PSYCHOLOGY &amp; HUMAN BEHAVIOUR                                                      10</p><p>24     MEDICINE &amp; HEALTH LITERACY                                                        11</p><p>25     LAW, GOVERNMENT &amp; CIVICS                                                          9</p><p>26     FRONTIERS &amp; DEEP QUESTIONS                                                        15</p><p>Knowledge Multiverse — Master Roadmap                                                                             Page 1</p><p>HOW TO BECOME GENUINELY KNOWLEDGEABLE</p><p>Knowledge ka matlab sirf terms yaad karna nahi. Ek knowledgeable person kisi idea ko simple words mein explain kar</p><p>sakta hai, evidence aur uncertainty ko identify karta hai, aur us idea ko doosre fields se connect kar sakta hai.</p><p>Foundation order: Scientific method -&gt; mathematics -&gt; classical physics -&gt; chemistry -&gt; biology -&gt; computing -&gt;</p><p>psychology/neuroscience -&gt; philosophy.</p><p>Deep order: Relativity -&gt; quantum mechanics -&gt; cosmology -&gt; quantum information -&gt; consciousness -&gt;</p><p>metaphysics -&gt; comparative philosophy -&gt; frontier research.</p><p>Golden habit: Jab bhi koi impressive claim suno, 5 questions poochho: “Evidence kya hai?”, “Alternative</p><p>explanation?”, “Kitni uncertainty?”, “Kis sense mein true?”, “Kya isko test kiya ja sakta hai?”</p><p>STATUS LABELS</p><p>Established = strong evidence and broad scientific/philosophical acceptance. Active research = evidence hai but</p><p>major questions open hain. Speculative = interesting proposal/hypothesis, not established fact.</p><p>Knowledge Multiverse — Master Roadmap                                                                         Page 2</p></div>
-        </article>
-<article class="knowledge-card" id="master-1">
-          <div class="card-head"><span class="section-no">01</span><h3>HOW TO LEARN &amp; THINK</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Scientific Method</div><p>Observation -&gt; question -&gt; hypothesis -&gt; test -&gt; data -&gt; conclusion -&gt; replication.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Correlation vs Causation</div><p>Do cheezein saath badal rahi hain to zaroori nahi ki ek doosri ko cause kare.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Falsifiability</div><p>Aisa possible test hona chahiye jo claim ko galat dikha sake.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Bayesian Thinking</div><p>Evidence aane par belief ko probability ke saath update karna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Critical Thinking</div><p>Claim, evidence, assumptions, alternatives aur uncertainty ko alag-alag check karo.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Cognitive Biases</div><p>Confirmation bias, anchoring, availability, sunk cost aur framing jaise systematic thinking errors.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Information Literacy</div><p>Textbook, review paper, primary study, news aur social-media claim ke evidence levels samjho.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Logic &amp; Arguments</div><p>Premise -&gt; inference -&gt; conclusion; valid reasoning aur true premises dono important hain.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Probability</div><p>Chance, conditional probability, expected value aur risk.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Statistics</div><p>Mean, variance, distributions, sampling, regression aur uncertainty.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                                                 Page 3</p></div>
-        </article>
-<article class="knowledge-card" id="master-2">
-          <div class="card-head"><span class="section-no">02</span><h3>MATHEMATICS UNIVERSE</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Arithmetic</div><p>Numbers, fractions, ratios, percentages, powers, roots aur scientific notation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Algebra</div><p>Variables, equations, inequalities, polynomials aur functions.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Geometry</div><p>Angles, triangles, circles, coordinates aur transformations.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Trigonometry</div><p>sin, cos, tan; triangles, rotations aur waves.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Vectors</div><p>Magnitude + direction; velocity, force aur fields mein essential.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Calculus</div><p>Derivative = change ki rate; integral = accumulation/area.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Limits</div><p>Kisi quantity ke kisi value ke bahut paas jaane par behaviour.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Differential Equations</div><p>Unknown function aur derivatives wali equations; motion, growth aur fields mein.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Linear Algebra</div><p>Vectors, matrices, eigenvalues/eigenvectors; quantum mechanics aur AI mein.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Complex Numbers</div><p>Real + imaginary numbers; waves, circuits aur quantum theory mein.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Probability &amp; Statistics</div><p>Random variables, distributions, expectation aur inference.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">12</span>Discrete Mathematics</div><p>Sets, logic, graphs, counting aur algorithms.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">13</span>Number Theory</div><p>Prime numbers, divisibility aur modular arithmetic; cryptography ka base.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">14</span>Topology</div><p>Continuous stretching ke under shape ki properties; modern math aur physics mein.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">15</span>Mathematical Logic</div><p>Formal proof, consistency, completeness aur formal systems.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                               Page 4</p></div>
-        </article>
-<article class="knowledge-card" id="master-3">
-          <div class="card-head"><span class="section-no">03</span><h3>CLASSICAL PHYSICS</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Units &amp; Dimensions</div><p>SI units, dimensional analysis aur physical quantities.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Kinematics</div><p>Position, velocity, acceleration aur motion ka description.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Newton&#x27;s Laws</div><p>Inertia, F=ma aur action-reaction; classical mechanics ka backbone.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Work, Energy &amp; Power</div><p>Force se energy transfer, kinetic/potential energy aur power.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Momentum &amp; Collisions</div><p>Momentum conservation, impulse aur elastic/inelastic collisions.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Rotational Mechanics</div><p>Torque, angular momentum, moment of inertia aur rolling.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Gravitation</div><p>Newtonian gravity, orbits, escape velocity aur Kepler laws.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Oscillations</div><p>Simple harmonic motion, resonance aur damping.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Waves</div><p>Frequency, wavelength, phase, interference aur standing waves.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Fluid Mechanics</div><p>Pressure, buoyancy, viscosity aur flow.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Thermodynamics</div><p>Temperature, heat, work, internal energy aur laws of thermodynamics.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">12</span>Statistical Mechanics</div><p>Microscopic particles se temperature, pressure aur entropy ka connection.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">13</span>Electrostatics</div><p>Charge, Coulomb law, electric field aur potential.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">14</span>Circuits</div><p>Current, voltage, resistance aur Kirchhoff laws.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">15</span>Magnetism</div><p>Magnetic fields, Lorentz force aur magnetic materials.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">16</span>Electromagnetic Induction</div><p>Changing magnetic flux se EMF; generators aur transformers.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">17</span>Maxwell&#x27;s Equations</div><p>Electricity aur magnetism ko unified electromagnetic theory mein jodti hain.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                          Page 5</p></div>
-        </article>
-<article class="knowledge-card" id="master-4">
-          <div class="card-head"><span class="section-no">04</span><h3>RELATIVITY &amp; SPACETIME</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Special Relativity</div><p>High-speed motion mein time, length aur simultaneity observer ke frame par depend kar sakte hain.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Lorentz Transformations</div><p>Different inertial observers ke space-time coordinates ko relate karti hain.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Time Dilation</div><p>Different frames mein elapsed time different measure ho sakta hai.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Length Contraction</div><p>Motion ki direction mein measured length frame-dependent hoti hai.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Relativistic Energy</div><p>E=mc^2 aur full energy-momentum relation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Equivalence Principle</div><p>Locally gravity aur acceleration ke effects ko equivalent treat kiya ja sakta hai.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>General Relativity</div><p>Gravity ko spacetime geometry/curvature ke framework mein describe karti hai.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Geodesics</div><p>Curved spacetime mein free-falling bodies ke natural paths.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Gravitational Time Dilation</div><p>Strong gravity mein clocks differently tick karte hain.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Gravitational Waves</div><p>Massive accelerating systems se spacetime mein propagating ripples.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                                               Page 6</p></div>
-        </article>
-<article class="knowledge-card" id="master-5">
-          <div class="card-head"><span class="section-no">05</span><h3>QUANTUM UNIVERSE</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Crisis of Classical Physics</div><p>Blackbody radiation, photoelectric effect aur atomic spectra ne classical models ki limits dikhayi.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Planck</div><p>Energy quantisation ka early idea.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Einstein &amp; Photons</div><p>Photoelectric effect ko light quanta se explain kiya.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Bohr Model</div><p>Hydrogen ke quantised energy levels ka early atomic model.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>de Broglie</div><p>Matter particles ke saath wave nature associate ki.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Heisenberg</div><p>Matrix mechanics aur uncertainty principle ke major architect.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Schrodinger</div><p>Wave mechanics aur Schrodinger equation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Born Rule</div><p>Wavefunction ki probability interpretation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Dirac</div><p>Relativistic quantum theory aur antimatter prediction mein major contribution.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Wave-Particle Duality</div><p>Quantum objects ko simple classical particle/wave categories mein fit nahi kiya ja sakta.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Superposition</div><p>Quantum state multiple basis states ke combination mein ho sakti hai.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">12</span>Wavefunction</div><p>Quantum state ko mathematically represent karne wali object.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">13</span>Uncertainty Principle</div><p>Position aur momentum jaise pairs ko arbitrarily precise simultaneously nahi kiya ja sakta.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">14</span>Quantum Tunnelling</div><p>Classically forbidden region ke across non-zero quantum probability.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">15</span>Entanglement</div><p>Composite quantum states mein unusually strong correlations.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">16</span>EPR</div><p>Quantum completeness aur nonlocal correlations par foundational argument.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">17</span>Bell&#x27;s Theorem</div><p>Local hidden-variable theories aur quantum predictions ke beech experimentally testable difference.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">18</span>Measurement Problem</div><p>Quantum evolution aur definite measurement outcomes ko reconcile karne ka puzzle.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">19</span>Copenhagen Interpretation</div><p>Measurement-centered interpretation family.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">20</span>Many-Worlds</div><p>Knowledge Multiverse — Master Roadmap                                                                 Page 7</p></div><p>Wavefunction collapse ke bina quantum theory ko interpret karne ka proposal.</p><div class="topic"><div class="topic-name"><span class="topic-num">21</span>Decoherence</div><p>Environment interactions quantum interference ko effectively suppress kar sakte hain.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">22</span>Spin</div><p>Intrinsic quantum angular momentum; classical spinning ball ka literal version nahi.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">23</span>Quantum Statistics</div><p>Bosons/fermions aur Bose-Einstein/Fermi-Dirac statistics.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">24</span>Quantum Field Theory</div><p>Particles ko quantum fields ke excitations ke roop mein describe karti hai.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">25</span>QED</div><p>Quantum electrodynamics: charged matter + electromagnetic field.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">26</span>QCD</div><p>Quantum chromodynamics: quarks + gluons + strong interaction.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">27</span>Standard Model</div><p>Elementary particles aur strong/weak/electromagnetic interactions ka framework; gravity included nahi.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">28</span>Quantum Information</div><p>Qubit, measurement, entanglement, channels aur information.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">29</span>Quantum Computing</div><p>Quantum states se computation; selected problems mein potential speedups.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">30</span>Quantum Gravity</div><p>Quantum theory aur gravity ko consistent framework mein combine karne ki research.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">31</span>String Theory</div><p>Fundamental entities ko one-dimensional strings ke models.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">32</span>M-Theory</div><p>Different string theories ko broader higher-dimensional framework mein relate karne ka proposal.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">33</span>Extra Dimensions</div><p>Four-dimensional spacetime ke beyond dimensions ke theoretical models.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">34</span>Loop Quantum Gravity</div><p>Spacetime geometry ko quantum degrees of freedom se quantise karne ka approach.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">35</span>Holographic Principle</div><p>Gravitational systems mein bulk physics ko lower-dimensional boundary description se relate karne ka idea.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">36</span>AdS/CFT</div><p>Gravity in AdS space aur lower-dimensional conformal field theory ke beech duality.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                                                        Page 8</p></div>
-        </article>
-<article class="knowledge-card" id="master-6">
-          <div class="card-head"><span class="section-no">06</span><h3>ASTRONOMY &amp; COSMOLOGY</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Solar System</div><p>Sun, planets, moons, asteroids, comets aur dwarf planets.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Stars</div><p>Formation, fusion, equilibrium, evolution aur stellar death.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>H-R Diagram</div><p>Stars ko luminosity aur temperature se classify karne ka diagram.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>White Dwarfs</div><p>Low/intermediate-mass stars ke dense remnants.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Neutron Stars</div><p>Extremely dense stellar remnants made largely of neutron-rich matter.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Black Holes</div><p>Event horizon wale compact gravitational objects.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Exoplanets</div><p>Solar System ke bahar planets; transit aur radial-velocity methods.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Milky Way</div><p>Hamara barred spiral galaxy.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Galaxies</div><p>Spiral, elliptical, irregular aur galaxy evolution.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Big Bang Model</div><p>Observable universe ek hot, dense early state se expand hua; ordinary space explosion nahi.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Cosmic Microwave Background</div><p>Early universe ki relic radiation; major cosmological evidence.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">12</span>Inflation</div><p>Early universe mein proposed very rapid expansion phase.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">13</span>Dark Matter</div><p>Unseen component inferred from gravitational effects; nature unknown.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">14</span>Dark Energy</div><p>Accelerated cosmic expansion ko describe karne wala unknown component/phenomenon.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">15</span>Hawking Radiation</div><p>Black holes ke thermal radiation emit karne ka theoretical prediction.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">16</span>Information Paradox</div><p>Black-hole evaporation aur quantum information preservation ka puzzle.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">17</span>Large-Scale Structure</div><p>Cosmic web, clusters, filaments aur voids.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">18</span>Multiverse</div><p>Multiple universes ki hypotheses ka broad label; established observation nahi.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">19</span>Anthropic Reasoning</div><p>Observer selection effects ko cosmological reasoning mein use karna.</p></div><h4>SELF-TEST</h4><p>Knowledge Multiverse — Master Roadmap                                                         Page 9</p><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                  Page 10</p></div>
-        </article>
-<article class="knowledge-card" id="master-7">
-          <div class="card-head"><span class="section-no">07</span><h3>CHEMISTRY</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Atomic Structure</div><p>Nucleus, electrons, isotopes aur electron configurations.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Periodic Table</div><p>Elements ko atomic number aur recurring properties se organize karta hai.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Chemical Bonding</div><p>Ionic, covalent aur metallic bonding.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Molecular Geometry</div><p>VSEPR, hybridisation aur molecular shapes.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Stoichiometry</div><p>Moles aur balanced equations se quantities calculate karna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Thermochemistry</div><p>Reaction ke heat/enthalpy changes.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Chemical Equilibrium</div><p>Forward/reverse reactions ka dynamic balance.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Acids &amp; Bases</div><p>pH, Brønsted-Lowry aur Lewis concepts.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Redox</div><p>Electron transfer, oxidation states, batteries aur corrosion.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Electrochemistry</div><p>Chemical reactions aur electrical energy ka relation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Organic Chemistry</div><p>Carbon compounds, functional groups aur mechanisms.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">12</span>Biochemistry</div><p>Proteins, carbohydrates, lipids, nucleic acids aur metabolism.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">13</span>Materials Chemistry</div><p>Polymers, ceramics, semiconductors, composites aur nanomaterials.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">14</span>Nuclear Chemistry</div><p>Radioactivity, decay, fission, fusion aur isotopes.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                       Page 11</p></div>
-        </article>
-<article class="knowledge-card" id="master-8">
-          <div class="card-head"><span class="section-no">08</span><h3>BIOLOGY, EVOLUTION &amp; GENETICS</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Cell Biology</div><p>Cell membrane, organelles, transport aur cell cycle.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>DNA &amp; RNA</div><p>Genetic information storage, copying aur expression.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Gene Expression</div><p>DNA -&gt; RNA -&gt; protein; regulation is much richer than the slogan.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Genetics</div><p>Alleles, inheritance, recombination aur variation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Epigenetics</div><p>Gene expression ko affect karne wale regulatory changes jo DNA sequence badalna zaroori nahi karte.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Natural Selection</div><p>Heritable variation + differential reproductive success se populations evolve kar sakti hain.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Genetic Drift</div><p>Chance events se allele frequencies change hona.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Gene Flow</div><p>Populations ke beech genes ka movement.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Speciation</div><p>New species formation; reproductive isolation important.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Phylogenetics</div><p>Evolutionary relationships ko infer karna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Microbiology</div><p>Bacteria, archaea, fungi, protists aur microbes.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">12</span>Virology</div><p>Viruses ki structure, replication aur evolution.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">13</span>Immunology</div><p>Innate aur adaptive immune systems.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">14</span>Human Physiology</div><p>Nervous, cardiovascular, respiratory, digestive, endocrine systems.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">15</span>Ecology</div><p>Organisms aur environment ke interactions.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">16</span>Food Webs</div><p>Energy flow aur nutrient cycles.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">17</span>Biodiversity</div><p>Genes, species aur ecosystems ki diversity.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">18</span>Conservation Biology</div><p>Species aur ecosystems ko protect karne ki science.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">19</span>Origin of Life</div><p>Prebiotic chemistry se first life ke emergence par research.</p></div><h4>SELF-TEST</h4><p>Knowledge Multiverse — Master Roadmap                                                                 Page 12</p><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                  Page 13</p></div>
-        </article>
-<article class="knowledge-card" id="master-9">
-          <div class="card-head"><span class="section-no">09</span><h3>EARTH, CLIMATE &amp; ENVIRONMENT</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Earth Structure</div><p>Crust, mantle, outer core, inner core.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Plate Tectonics</div><p>Lithospheric plates ki movement se mountains, earthquakes aur ocean basins.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Geology</div><p>Rocks, minerals aur Earth history.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Volcanoes</div><p>Magma, eruptions aur volcanic hazards.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Earthquakes</div><p>Fault movement, seismic waves aur hazards.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Oceanography</div><p>Ocean circulation, chemistry, ecosystems aur climate.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Atmospheric Science</div><p>Pressure, winds, clouds aur circulation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Climate Science</div><p>Long-term climate patterns, radiative forcing aur feedbacks.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Greenhouse Effect</div><p>Certain gases outgoing infrared radiation ko absorb/re-emit karte hain.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Carbon Cycle</div><p>Atmosphere, ocean, biosphere aur rocks ke beech carbon exchange.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Water Cycle</div><p>Evaporation, condensation, precipitation, runoff aur groundwater.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">12</span>Pollution</div><p>Air, water, soil aur chemical pollution.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">13</span>Renewable Energy</div><p>Solar, wind, hydro, geothermal aur sustainable systems.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">14</span>Energy Storage</div><p>Batteries, pumped hydro, thermal storage aur hydrogen concepts.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                         Page 14</p></div>
-        </article>
-<article class="knowledge-card" id="master-10">
-          <div class="card-head"><span class="section-no">10</span><h3>NEUROSCIENCE, MIND &amp; CONSCIOUSNESS</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Neurons</div><p>Electrical signals, synapses aur neural communication.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Brain Regions</div><p>Cortex, thalamus, hippocampus, basal ganglia, cerebellum, brainstem.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Perception</div><p>Sensory signals ko meaningful representations mein process karna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Memory</div><p>Encoding, consolidation, retrieval; working, episodic, semantic, procedural.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Emotion</div><p>Brain-body processes involved in affect, motivation aur regulation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Attention</div><p>Limited processing resources ko select/allocate karna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Decision-Making</div><p>Evidence, reward, risk aur uncertainty ke basis par choices.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Self</div><p>Self-model, body representation, autobiographical identity aur social self.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Cognitive Neuroscience</div><p>Mental functions ko neural systems se relate karna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Consciousness</div><p>Subjective experience aur awareness ka scientific/philosophical study.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Global Workspace Theory</div><p>Conscious access ko globally available information se model karna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">12</span>Integrated Information Theory</div><p>Consciousness ko integrated causal/informational structure se relate karne ka theory.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">13</span>Higher-Order Theories</div><p>Conscious states ko higher-order representation se explain karne ki theory family.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">14</span>Predictive Processing</div><p>Brain ko prediction-generating system ke roop mein model karne ka framework.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">15</span>Attention Schema Theory</div><p>Attention ke internal model ko consciousness se relate karne ka proposal.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">16</span>Neural Correlates of Consciousness</div><p>Conscious states ke saath reliably associated neural activity.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">17</span>Brain -&gt; Mind -&gt; Machine</div><p>Neural computation, cognition aur artificial systems ke relationships.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                                   Page 15</p></div>
-        </article>
-<article class="knowledge-card" id="master-11">
-          <div class="card-head"><span class="section-no">11</span><h3>CORE PHILOSOPHY</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Question of Being</div><p>Kya exist karta hai? Existence ka meaning kya hai?</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Ontology</div><p>Being aur reality ki basic categories ka study.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Epistemology</div><p>Knowledge kaise possible hai aur justified belief kya hai?</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Metaphysics</div><p>Reality, causation, time, identity, possibility aur existence ke deepest questions.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Logic</div><p>Valid reasoning ke formal structures.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Ethics</div><p>Right/wrong, good/bad aur moral responsibility.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Aesthetics</div><p>Beauty, art aur aesthetic experience.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Philosophy of Mind</div><p>Mind, brain aur consciousness ka relationship.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Philosophy of Science</div><p>Science, explanation, evidence aur theories ka nature.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Philosophy of Physics</div><p>Space, time, quantum theory aur physical reality ke conceptual questions.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Philosophy of Language</div><p>Meaning, reference, truth aur communication.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">12</span>Free Will</div><p>Kya choices genuinely free hain? Determinism ke saath compatibility ka debate.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">13</span>Causation</div><p>Cause aur effect ko define karne ke models.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">14</span>Identity</div><p>Kisi cheez/person ko time ke across same kya banata hai?</p></div><div class="topic"><div class="topic-name"><span class="topic-num">15</span>Possibility &amp; Necessity</div><p>Kya ho sakta tha aur kya hona hi tha.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">16</span>Mind-Body Problem</div><p>Mental experience aur physical brain ka relationship.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                                 Page 16</p></div>
-        </article>
-<article class="knowledge-card" id="master-12">
-          <div class="card-head"><span class="section-no">12</span><h3>WESTERN PHILOSOPHY</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Pre-Socratics</div><p>Early Greek thinkers who asked rational questions about nature and being.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Parmenides</div><p>Being aur change par radical arguments.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Heraclitus</div><p>Change, flux aur logos.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Socrates</div><p>Questioning, ethics aur examined life.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Plato</div><p>Forms, knowledge, soul, politics aur ideal state.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Aristotle</div><p>Logic, causation, substance, ethics, biology aur metaphysics.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Stoicism</div><p>Virtue, reason, control aur resilience.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Epicureanism</div><p>Pleasure ko tranquillity aur freedom from unnecessary fear ke context mein.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Skepticism</div><p>Knowledge claims par systematic doubt.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Neoplatonism</div><p>The One aur emanation-based metaphysics.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Augustine</div><p>Christian theology aur Platonic philosophy ka major synthesis.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">12</span>Aquinas</div><p>Aristotelian philosophy aur Christian theology ka synthesis.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">13</span>Rationalism</div><p>Reason ko knowledge ka major source; Descartes, Spinoza, Leibniz.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">14</span>Empiricism</div><p>Experience ko knowledge ka major source; Locke, Berkeley, Hume.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">15</span>Kant</div><p>Experience aur knowledge ki conditions par critical philosophy.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">16</span>Hegel</div><p>History, dialectic aur absolute idealism.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">17</span>Utilitarianism</div><p>Actions ko consequences aur overall well-being se evaluate karna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">18</span>Existentialism</div><p>Freedom, meaning, responsibility, anxiety aur existence.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">19</span>Phenomenology</div><p>Lived experience aur consciousness ki structures ka study.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">20</span>Analytic Philosophy</div><p>Knowledge Multiverse — Master Roadmap                                         Page 17</p></div><p>Clarity, logic, language aur argument analysis.</p><div class="topic"><div class="topic-name"><span class="topic-num">21</span>Pragmatism</div><p>Ideas ko practical consequences aur inquiry ke context mein evaluate karna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">22</span>Nietzsche</div><p>Values, morality, power, culture aur self-overcoming ki critique.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">23</span>Marx</div><p>Capital, class, labour aur historical materialism.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">24</span>Contemporary Metaphysics</div><p>Grounding, modality, identity, universals aur laws of nature.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                         Page 18</p></div>
-        </article>
-<article class="knowledge-card" id="master-13">
-          <div class="card-head"><span class="section-no">13</span><h3>INDIAN PHILOSOPHY</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Vedic Thought</div><p>Early Indian texts, ritual aur philosophical questions.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Upanishadic Thought</div><p>Atman, Brahman, knowledge aur ultimate reality.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Samkhya</div><p>Purusha aur Prakriti ka dual-aspect metaphysics.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Yoga Philosophy</div><p>Mind discipline, meditation, ethics aur liberation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Nyaya</div><p>Logic, inference, perception aur knowledge sources.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Vaisheshika</div><p>Reality ki categories, substances, qualities aur atomistic ideas.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Mimamsa</div><p>Vedic interpretation, language, duty aur knowledge.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Advaita Vedanta</div><p>Non-dual Brahman; Atman-Brahman identity ka central claim.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Vishishtadvaita</div><p>Qualified non-dualism; Brahman, souls aur world ka relation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Dvaita Vedanta</div><p>God aur individual souls/world ke real distinction par emphasis.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Bhagavad Gita Philosophy</div><p>Dharma, action, knowledge, devotion aur liberation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">12</span>Kashmir Shaivism</div><p>Consciousness-centered non-dual Shaiva metaphysics.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">13</span>Charvaka</div><p>Materialist/empiricist tendency; perception aur worldly life par emphasis.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                        Page 19</p></div>
-        </article>
-<article class="knowledge-card" id="master-14">
-          <div class="card-head"><span class="section-no">14</span><h3>BUDDHIST &amp; JAIN PHILOSOPHY</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Early Buddhism</div><p>Dukkha, impermanence, dependent origination aur liberation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Four Noble Truths</div><p>Dukkha, causes, cessation aur path ka framework.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Eightfold Path</div><p>Ethics, mental discipline aur wisdom ka practical path.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Anicca</div><p>Conditioned phenomena ki impermanence.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Anatta</div><p>Permanent independent self ki critique.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Dependent Origination</div><p>Phenomena conditions par depend karke arise hote hain.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Abhidharma</div><p>Experience aur mind ko detailed categories mein analyze karne wali traditions.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Nagarjuna</div><p>Madhyamaka aur emptiness ki sophisticated philosophy.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Madhyamaka</div><p>Things ko independent intrinsic essence se empty samajhna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Yogacara</div><p>Mind, representation aur experience ke structures.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Mahayana</div><p>Bodhisattva ideal, emptiness, compassion aur diverse systems.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">12</span>Chan/Zen</div><p>Meditation, direct insight aur conceptual attachment se freedom.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">13</span>Jain Philosophy</div><p>Anekantavada, ahimsa, karma aur multiple perspectives.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">14</span>Anekantavada</div><p>Reality ko multiple valid standpoints se approach karne ka doctrine.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                            Page 20</p></div>
-        </article>
-<article class="knowledge-card" id="master-15">
-          <div class="card-head"><span class="section-no">15</span><h3>ISLAMIC, PERSIAN &amp; SUFI THOUGHT</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Kalam</div><p>God, causation, free will aur reason-faith questions par theological traditions.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Al-Ghazali</div><p>Philosophy, theology, skepticism, ethics aur spirituality ko deeply engage kiya.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Ibn Sina (Avicenna)</div><p>Metaphysics, medicine, logic aur necessary existence.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Ibn Rushd (Averroes)</div><p>Aristotle aur reason-faith relationship par major commentator.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Ibn Arabi</div><p>Wujud, divine names aur mystical metaphysics se associated thinker.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Wujud</div><p>Being/existence; Sufi metaphysics mein central concept.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Tajalli</div><p>Divine self-disclosure/manifestation ka mystical concept.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Divine Names</div><p>God ke names/attributes aur contemplative meanings.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Sufi Spiritual Path</div><p>Tawbah, sabr, tawakkul, rida, mahabbah, fana, baqa jaise concepts.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Attar</div><p>Persian mystical poetry aur spiritual journey.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Rumi</div><p>Love, transformation aur mystical themes.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">12</span>Saadi</div><p>Persian ethical aur mystical literature.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">13</span>Hafiz</div><p>Persian lyric poetry; love aur mystical symbolism.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                              Page 21</p></div>
-        </article>
-<article class="knowledge-card" id="master-16">
-          <div class="card-head"><span class="section-no">16</span><h3>CHINESE &amp; JAPANESE PHILOSOPHY</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Confucianism</div><p>Ethics, relationships, education, social harmony aur cultivation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Mozi</div><p>Universal care, practical ethics aur social utility.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Laozi</div><p>Dao, simplicity aur non-forcing (wu wei).</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Zhuangzi</div><p>Perspective, spontaneity, transformation aur fixed distinctions ki limits.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Legalism</div><p>Law, institutions aur state order par strong emphasis.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Neo-Confucianism</div><p>Confucian ethics ko metaphysical frameworks ke saath develop karna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Daoism</div><p>Naturalness, harmony aur spontaneity.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Chan/Zen</div><p>Meditation, direct insight aur awakening.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Kyoto School</div><p>Japanese modern philosophy engaging Western philosophy aur Buddhism.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Nishida</div><p>Pure experience, place aur self/world relation.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                        Page 22</p></div>
-        </article>
-<article class="knowledge-card" id="master-17">
-          <div class="card-head"><span class="section-no">17</span><h3>SOCIAL &amp; POLITICAL PHILOSOPHY</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Social Contract</div><p>State ki legitimacy aur individual freedom ka relationship.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Liberalism</div><p>Individual rights, liberty, rule of law aur political equality.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Conservatism</div><p>Tradition, institutions, continuity aur gradual change.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Socialism</div><p>Economic organization aur ownership ke egalitarian alternatives.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Anarchism</div><p>Coercive hierarchy aur centralized authority ki critique.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Democracy</div><p>Citizens ke participation/representation se political power organize karna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Justice</div><p>Fairness, rights, equality, desert aur institutions.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Rawls</div><p>Justice as fairness; original position aur veil of ignorance.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Feminist Philosophy</div><p>Gender, power, embodiment, knowledge aur social structures ki analysis.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Philosophy of Law</div><p>Law, authority, rights, punishment aur justice.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Human Rights</div><p>Human dignity aur freedoms se related universal moral/legal claims.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                         Page 23</p></div>
-        </article>
-<article class="knowledge-card" id="master-18">
-          <div class="card-head"><span class="section-no">18</span><h3>ECONOMICS &amp; FINANCE</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Microeconomics</div><p>Individuals, firms, markets, prices aur incentives.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Macroeconomics</div><p>GDP, inflation, unemployment, interest rates aur cycles.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Supply &amp; Demand</div><p>Market interaction ke simple model se prices aur quantities.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Elasticity</div><p>Price/income changes ke response mein quantity sensitivity.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Opportunity Cost</div><p>Choice ka real cost = next-best alternative jo chhoda.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Comparative Advantage</div><p>Trade se gains ka principle.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Money</div><p>Medium of exchange, unit of account, store of value.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Banking</div><p>Deposits, lending, credit, interest aur payment systems.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Central Banks</div><p>Monetary policy, inflation aur financial stability.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Fiscal Policy</div><p>Government spending aur taxation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Investing Basics</div><p>Risk, return, diversification, compounding, fees, time horizon.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">12</span>Bonds</div><p>Debt instruments, yield aur interest-rate risk.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">13</span>Stocks</div><p>Company ownership claims; valuation and market risk.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">14</span>Index Funds</div><p>Broad market exposure through baskets of securities.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">15</span>Behavioral Economics</div><p>Psychology aur biases ka economic decisions par impact.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                  Page 24</p></div>
-        </article>
-<article class="knowledge-card" id="master-19">
-          <div class="card-head"><span class="section-no">19</span><h3>COMPUTER SCIENCE &amp; INFORMATION</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Algorithms</div><p>Problems solve karne ke precise procedures.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Data Structures</div><p>Arrays, lists, stacks, queues, trees, graphs, hash tables.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Complexity</div><p>Time/space requirements; Big-O notation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Programming</div><p>Variables, control flow, functions, abstraction aur debugging.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Computer Architecture</div><p>CPU, memory, storage aur instruction execution.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Operating Systems</div><p>Processes, memory, files, scheduling aur permissions.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Networks</div><p>Packets, IP, TCP/UDP, DNS, HTTP aur routing.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Internet</div><p>Global network of networks aur protocols.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Cryptography</div><p>Confidentiality, integrity, authentication, encryption, signatures.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Databases</div><p>Structured data, queries, indexing aur transactions.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Distributed Systems</div><p>Multiple computers coordinating despite latency/failure.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">12</span>Artificial Intelligence</div><p>Learning, reasoning, perception jaise tasks perform karne wale systems.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">13</span>Machine Learning</div><p>Data se patterns/models learn karna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">14</span>Neural Networks</div><p>Layered differentiable models used widely in modern AI.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">15</span>Generative AI</div><p>Text, image, audio, code etc. generate karne wale models.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">16</span>Information Theory</div><p>Entropy, compression, communication aur noisy channels.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">17</span>Computability</div><p>Kaunse problems algorithmically solve ho sakte hain?</p></div><div class="topic"><div class="topic-name"><span class="topic-num">18</span>Turing Machines</div><p>Abstract model of computation; computability theory ka foundation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">19</span>Quantum Information</div><p>Qubits, channels, entanglement aur quantum error correction.</p></div><h4>SELF-TEST</h4><p>Knowledge Multiverse — Master Roadmap                                     Page 25</p><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                  Page 26</p></div>
-        </article>
-<article class="knowledge-card" id="master-20">
-          <div class="card-head"><span class="section-no">20</span><h3>ENGINEERING &amp; TECHNOLOGY</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Engineering Design</div><p>Requirements -&gt; constraints -&gt; prototype -&gt; test -&gt; iterate.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Mechanical Engineering</div><p>Mechanics, machines, thermofluids aur materials.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Electrical Engineering</div><p>Circuits, electronics, power, signals aur control.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Electronics</div><p>Diodes, transistors, amplifiers aur digital logic.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Control Systems</div><p>Feedback se systems ko desired behaviour ke around regulate karna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Signal Processing</div><p>Signals ko filter, transform aur interpret karna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Civil Engineering</div><p>Structures, construction, transport aur water systems.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Chemical Engineering</div><p>Processes, reactors, separation, heat/mass transfer.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Aerospace</div><p>Flight, propulsion, aerodynamics aur spacecraft.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Robotics</div><p>Sensing, actuation, control, planning aur autonomy.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Nanotechnology</div><p>Nanoscale materials aur devices.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">12</span>Semiconductors</div><p>Transistors, chips, LEDs aur sensors ke core materials.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">13</span>Nuclear Engineering</div><p>Fission systems, radiation, reactor safety aur fuel cycles.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                  Page 27</p></div>
-        </article>
-<article class="knowledge-card" id="master-21">
-          <div class="card-head"><span class="section-no">21</span><h3>HISTORY &amp; CIVILIZATIONS</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Prehistory</div><p>Archaeology, early humans, tools, migration aur agriculture.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Mesopotamia</div><p>Early cities, writing, states aur law.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Ancient Egypt</div><p>Pharaonic civilization, writing, religion aur engineering.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Indus Valley Civilization</div><p>Urban planning, trade, crafts aur undeciphered script.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Ancient China</div><p>Dynasties, bureaucracy, philosophy aur technology.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Ancient Greece</div><p>City-states, philosophy, democracy, science aur art.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Roman World</div><p>Republic, empire, law, engineering aur Mediterranean networks.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Indian Civilizations</div><p>State formation, literature, mathematics, science aur diverse traditions.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Islamic Golden Age</div><p>Mathematics, astronomy, medicine, philosophy aur translation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Medieval Europe</div><p>Feudal institutions, religion, cities, trade aur intellectual life.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Renaissance</div><p>Art, humanism, science aur changing institutions.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">12</span>Scientific Revolution</div><p>Mathematical and experimental approaches to nature.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">13</span>Enlightenment</div><p>Reason, political philosophy, science aur authority ki critiques.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">14</span>Industrial Revolution</div><p>Mechanization, factories, fossil energy aur social transformation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">15</span>Colonialism</div><p>Empire, extraction, trade, resistance aur long-term global effects.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">16</span>World Wars</div><p>Industrialized warfare, geopolitics, nationalism aur social change.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">17</span>Cold War</div><p>US-USSR rivalry, nuclear deterrence, proxy conflicts aur space race.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">18</span>Post-1945 World</div><p>Decolonization, globalization, institutions aur technological change.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                       Page 28</p></div>
-        </article>
-<article class="knowledge-card" id="master-22">
-          <div class="card-head"><span class="section-no">22</span><h3>LANGUAGE, LITERATURE &amp; ARTS</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Linguistics</div><p>Language ki structure, meaning, use, history aur variation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Phonetics</div><p>Speech sounds ka physical/articulatory study.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Phonology</div><p>Language-specific sound systems.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Morphology</div><p>Words ka internal structure.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Syntax</div><p>Sentence structure and grammar.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Semantics</div><p>Literal meaning.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Pragmatics</div><p>Context mein meaning.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Writing Systems</div><p>Alphabets, abugidas, syllabaries aur logographic systems.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Rhetoric</div><p>Persuasion, argument aur effective communication.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Literary Theory</div><p>Texts ko different conceptual lenses se read karna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Poetry</div><p>Rhythm, imagery, metaphor, sound aur compressed expression.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">12</span>Narrative</div><p>Character, plot, perspective, time aur world-building.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">13</span>World Literature</div><p>Indian, Persian, Arabic, Chinese, Japanese, Greek, Latin aur modern traditions.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">14</span>Visual Art</div><p>Drawing, painting, sculpture, photography, installation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">15</span>Music</div><p>Melody, harmony, rhythm, timbre aur form.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">16</span>Architecture</div><p>Space, structure, function, aesthetics aur urban context.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">17</span>Film</div><p>Image, sound, editing, narrative aur visual language.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                             Page 29</p></div>
-        </article>
-<article class="knowledge-card" id="master-23">
-          <div class="card-head"><span class="section-no">23</span><h3>PSYCHOLOGY &amp; HUMAN BEHAVIOUR</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Behaviorism</div><p>Observable behaviour aur learning processes par emphasis.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Cognitive Psychology</div><p>Attention, memory, language, reasoning aur problem solving.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Developmental Psychology</div><p>Cognition, emotion aur behaviour across lifespan.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Social Psychology</div><p>Groups, norms, persuasion, identity aur interpersonal behaviour.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Personality</div><p>Traits, individual differences aur personality models.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Learning</div><p>Classical conditioning, operant conditioning, observational learning.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Memory Science</div><p>Encoding, consolidation, retrieval aur forgetting.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Motivation</div><p>Goals, rewards, needs aur self-regulation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Decision Biases</div><p>Heuristics aur systematic judgment errors.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Mental Models</div><p>World ko samajhne ke internal conceptual frameworks.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                   Page 30</p></div>
-        </article>
-<article class="knowledge-card" id="master-24">
-          <div class="card-head"><span class="section-no">24</span><h3>MEDICINE &amp; HEALTH LITERACY</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Anatomy</div><p>Body structures.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Physiology</div><p>Body systems ka function.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Pathology</div><p>Disease-related structural and functional changes.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Microbiology</div><p>Microorganisms aur infection-related science.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Immunology</div><p>Host defense aur immune responses.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Pharmacology</div><p>Drugs body mein kaise act karte hain.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Epidemiology</div><p>Diseases population mein kaise spread hoti hain.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Evidence-Based Medicine</div><p>Best evidence + clinical expertise + patient context.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Clinical Trials</div><p>Interventions ki safety/efficacy test karne ke structured studies.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Public Health</div><p>Population-level prevention, sanitation, vaccination, nutrition aur policy.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>First-Aid Literacy</div><p>Emergency recognition, basic response aur professional help kab leni hai.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                         Page 31</p></div>
-        </article>
-<article class="knowledge-card" id="master-25">
-          <div class="card-head"><span class="section-no">25</span><h3>LAW, GOVERNMENT &amp; CIVICS</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Constitution</div><p>State ki basic legal structure, powers aur rights.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Separation of Powers</div><p>Legislative, executive aur judiciary ke roles.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Rule of Law</div><p>Law sab par apply ho aur arbitrary power limited ho.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Elections</div><p>Representation, voting systems aur electoral institutions.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Public Policy</div><p>Collective problems ke liye government decisions/programs.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>International Relations</div><p>States, institutions, diplomacy, conflict aur cooperation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>International Law</div><p>States aur international actors ke legal rules.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Geopolitics</div><p>Geography, resources aur power ka international politics se relation.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Media &amp; Democracy</div><p>Journalism, propaganda, information ecosystems aur public opinion.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                   Page 32</p></div>
-        </article>
-<article class="knowledge-card" id="master-26">
-          <div class="card-head"><span class="section-no">26</span><h3>FRONTIERS &amp; DEEP QUESTIONS</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><div class="topic"><div class="topic-name"><span class="topic-num">1</span>Origin of Consciousness</div><p>Subjective experience kaise arise hui? Open scientific + philosophical problem.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">2</span>Origin of Life</div><p>Prebiotic chemistry se self-replicating systems tak transition kaise hua?</p></div><div class="topic"><div class="topic-name"><span class="topic-num">3</span>Unification in Physics</div><p>Quantum theory aur gravity ko ek deeper framework mein combine karna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">4</span>Dark Matter</div><p>Particle candidates, modified gravity aur other explanations ko test karna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">5</span>Dark Energy</div><p>Cosmological constant vs evolving explanations; observations se constrain karna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">6</span>Quantum Foundations</div><p>Measurement, locality, contextuality, interpretations aur information.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">7</span>Emergence</div><p>Simple interacting parts se higher-level properties ka arise hona.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">8</span>Complexity</div><p>Networks, feedback, nonlinear dynamics aur self-organization.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">9</span>Simulation Hypothesis</div><p>Reality computationally simulated ho sakti hai kya? Philosophical/speculative idea.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">10</span>Multiverse Hypotheses</div><p>Inflationary, quantum, string-landscape aur other proposals; evidence status varies.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">11</span>Holography</div><p>Gravity, quantum information aur spacetime ke deep links.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">12</span>AI Alignment</div><p>Advanced AI ko human goals/values ke saath reliably align karna.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">13</span>Artificial General Intelligence</div><p>Broad flexible machine intelligence ka research concept; definition disputed.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">14</span>SETI &amp; Extraterrestrial Life</div><p>Earth ke bahar life/intelligence ke evidence ki scientific search.</p></div><div class="topic"><div class="topic-name"><span class="topic-num">15</span>Future of Humanity</div><p>AI, biotech, climate, governance, space aur existential risks.</p></div><h4>SELF-TEST</h4><ul><li>Is section ka sabse basic question kya hai?</li><li>Iske 3 concepts ko ek doosre se connect karke samjhao.</li><li>Is field mein kya established hai aur kya abhi uncertain/open hai?</li></ul><p>Knowledge Multiverse — Master Roadmap                                                  Page 33</p><h4>THE 12 BIG QUESTIONS</h4><p>Reality: What exists, and what is fundamental?</p><p>Knowledge: How do we know what we know?</p><p>Mind: How does subjective experience arise?</p><p>Matter: What are the smallest physical constituents?</p><p>Space &amp; Time: What are space and time?</p><p>Life: How did life arise and diversify?</p><p>Universe: How did the cosmos begin and evolve?</p><p>Society: How should humans organize power, economy and justice?</p><p>Meaning: How do humans create or discover meaning?</p><p>Intelligence: What is intelligence, and can machines have it?</p><p>Value: What makes an action or life good?</p><p>Future: What kind of civilization should humanity build?</p><h4>ONE-YEAR STUDY PATH</h4><p>Months 1–2: Scientific method + mathematics + classical mechanics/electromagnetism.</p><p>Month 3: Chemistry + cell biology + evolution + genetics.</p><p>Month 4: Relativity + astronomy + cosmology.</p><p>Months 5–6: Quantum mechanics + quantum information.</p><p>Month 7: Neuroscience + psychology + consciousness.</p><p>Month 8: Logic + epistemology + philosophy of science.</p><p>Month 9: Western philosophy.</p><p>Month 10: Indian + Buddhist + Jain + Islamic/Sufi + Chinese/Japanese philosophy.</p><p>Month 11: Computer science + AI + economics + civics.</p><p>Month 12: Frontier topics: quantum gravity, origin of life, consciousness, AI alignment, complexity, multiverse.</p><p>Final principle: Curiosity rakho, lekin evidence ke bina certainty mat rakho. Science aur philosophy dono mein “I</p><p>don&#x27;t know yet” ek powerful answer hai.</p><p>Knowledge Multiverse — Master Roadmap                                                                              Page 34</p></div>
-        </article>
-<div id="advanced" class="divider"><span>02</span><h2>ADVANCED PHYSICS — “1%” ROADMAP</h2></div>
-<article class="knowledge-card" id="advanced-0">
-          <div class="card-head"><span class="section-no">START</span><h3>Introduction &amp; Study Framework</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>THE KNOWLEDGE MULTIVERSE</p><p>ADVANCED PHYSICS + QUANTUM</p><p>PHYSICS — “1%” ROADMAP</p><p>A research-oriented map for a student who wants to go far beyond ordinary school-level lists.</p><p>The goal is not to memorize difficult words, but to build the mathematics, intuition and</p><p>problem-solving ability needed to understand frontier physics.</p><p>Important: “1%” here means unusually deep and uncommon for a school student—not a literal</p><p>measurement of intelligence or knowledge. Some topics below are university/research level and require</p><p>substantial mathematics.</p><p>How to use this roadmap</p><ul><li>Do not jump directly to String Theory or Quantum Gravity. Build the prerequisite chain.</li><li>For every topic, learn: definition → physical intuition → mathematics → derivation → experiment/evidence</li></ul><p>→ limitations/open questions.</p><ul><li>Keep a separate notebook for equations and another for conceptual questions.</li><li>Whenever possible, solve problems instead of only watching videos.</li></ul></div>
-        </article>
-<article class="knowledge-card" id="advanced-1">
-          <div class="card-head"><span class="section-no">01</span><h3>Mathematical &amp; Conceptual Foundations</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>Core mathematics</p><ul><li>Calculus: limits, derivatives, integrals, multivariable calculus</li><li>Linear algebra: vectors, matrices, eigenvalues/eigenvectors, Hilbert spaces</li><li>Complex numbers and complex analysis</li><li>Ordinary and partial differential equations</li><li>Fourier series and Fourier transforms</li><li>Probability, random variables and distributions</li><li>Vector calculus: grad, div, curl, Green/Gauss/Stokes theorems</li><li>Tensor notation and index notation</li><li>Symmetry, groups and basic representation theory</li><li>Variational calculus and the action principle</li></ul><p>Physics thinking</p><ul><li>Dimensional analysis and scaling</li><li>Order-of-magnitude estimation</li><li>Symmetry as a physical principle</li><li>Conservation laws and Noether&#x27;s theorem</li><li>Effective theories and approximations</li><li>Thought experiments vs experimentally testable claims</li></ul></div>
-        </article>
-<article class="knowledge-card" id="advanced-2">
-          <div class="card-head"><span class="section-no">02</span><h3>Advanced Classical Mechanics</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>Mechanics beyond Newton</p><ul><li>Lagrangian mechanics</li><li>Hamiltonian mechanics</li><li>Canonical momentum and phase space</li><li>Poisson brackets</li><li>Canonical transformations</li><li>Hamilton–Jacobi theory</li><li>Action-angle variables</li><li>Central-force motion and scattering</li><li>Rigid-body dynamics and Euler equations</li><li>Gyroscopic motion and precession</li><li>Nonlinear oscillators</li><li>Coupled oscillators and normal modes</li><li>Resonance, damping and driven systems</li><li>Chaos and sensitivity to initial conditions</li><li>Lyapunov exponents</li><li>Logistic map and routes to chaos</li><li>Ergodicity and mixing</li><li>Symplectic geometry in mechanics</li><li>Classical field theory</li></ul></div>
-        </article>
-<article class="knowledge-card" id="advanced-3">
-          <div class="card-head"><span class="section-no">03</span><h3>Electromagnetism &amp; Advanced Field Physics</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>From Maxwell to modern field ideas</p><ul><li>Maxwell equations in differential and integral form</li><li>Gauge freedom and gauge transformations</li><li>Potentials, gauge fixing and Lorenz/Coulomb gauges</li><li>Electromagnetic waves and dispersion</li><li>Radiation from accelerated charges</li><li>Liénard–Wiechert potentials</li><li>Multipole expansion</li><li>Green&#x27;s functions for electromagnetic problems</li><li>Waveguides and cavity modes</li><li>Plasma basics and collective electromagnetic behavior</li><li>Relativistic electromagnetism</li><li>Covariant formulation of electromagnetism</li><li>Electromagnetic stress-energy tensor</li><li>Classical field action and Lagrangian density</li><li>Gauge symmetry as a structural principle</li></ul></div>
-        </article>
-<article class="knowledge-card" id="advanced-4">
-          <div class="card-head"><span class="section-no">04</span><h3>Special Relativity &amp; Relativistic Physics</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>Spacetime</p><ul><li>Minkowski spacetime</li><li>Four-vectors and invariant intervals</li><li>Lorentz transformations</li><li>Rapidity and hyperbolic geometry</li><li>Relativistic energy-momentum relation</li><li>Relativistic Doppler effect</li><li>Relativistic velocity addition</li><li>Relativistic collisions</li><li>Proper time and worldlines</li><li>Relativistic kinematics of decays</li><li>Causal structure and light cones</li><li>Relativity of simultaneity</li><li>Classical relativistic field theory</li></ul></div>
-        </article>
-<article class="knowledge-card" id="advanced-5">
-          <div class="card-head"><span class="section-no">05</span><h3>General Relativity &amp; Gravitation</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>Gravity as geometry</p><ul><li>Equivalence principle</li><li>Curved spacetime and geodesics</li><li>Metric tensor</li><li>Christoffel symbols</li><li>Covariant derivatives</li><li>Curvature tensors</li><li>Riemann, Ricci and Einstein tensors</li><li>Einstein field equations</li><li>Stress-energy tensor</li><li>Geodesic deviation and tidal forces</li><li>Schwarzschild spacetime</li><li>Gravitational time dilation</li><li>Gravitational redshift</li><li>Perihelion precession</li><li>Light bending and gravitational lensing</li><li>Black-hole horizons</li><li>Kerr black holes</li><li>Frame dragging</li><li>Penrose process</li><li>Ergospheres</li><li>Gravitational waves</li><li>Binary inspirals</li><li>Cosmic censorship hypothesis</li><li>Singularity theorems</li><li>Black-hole thermodynamics</li><li>ADM energy and spacetime decomposition</li><li>Numerical relativity</li></ul></div>
-        </article>
-<article class="knowledge-card" id="advanced-6">
-          <div class="card-head"><span class="section-no">06</span><h3>Quantum Mechanics: Deep Foundations</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>Core quantum structure</p><ul><li>Quantum states and Hilbert spaces</li><li>Operators, observables and commutators</li><li>Born rule and probability amplitudes</li><li>Schrödinger equation</li><li>Time evolution and unitary operators</li><li>Picture changes: Schrödinger, Heisenberg and interaction pictures</li><li>Angular momentum algebra</li><li>Spin-1/2 systems and Pauli matrices</li><li>Addition of angular momenta</li><li>Identical particles and exchange symmetry</li><li>Bosons and fermions</li><li>Density matrices</li><li>Pure vs mixed states</li><li>Partial trace and reduced states</li><li>Quantum measurement theory</li><li>Projective measurements</li><li>POVMs and generalized measurements</li><li>Quantum decoherence</li><li>Open quantum systems</li><li>Lindblad master equation</li><li>Path integrals</li><li>Stationary phase and classical limit</li><li>Semiclassical approximation</li><li>WKB approximation</li><li>Quantum scattering theory</li><li>Born approximation</li><li>Partial-wave analysis</li><li>Resonances and metastable states</li></ul></div>
-        </article>
-<article class="knowledge-card" id="advanced-7">
-          <div class="card-head"><span class="section-no">07</span><h3>Quantum Phenomena That Most Students Skip</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>Unusual and high-value topics</p><ul><li>Bell inequalities and experimental tests of local realism</li><li>Kochen–Specker theorem</li><li>Contextuality</li><li>Leggett inequalities and nonlocal correlations</li><li>Delayed-choice experiments</li><li>Quantum eraser</li><li>Interaction-free measurement</li><li>Quantum Zeno effect</li><li>Quantum anti-Zeno effect</li><li>Geometric/Berry phase</li><li>Aharonov–Bohm effect</li><li>Topological phases of quantum systems</li><li>Anomalous weak values</li><li>Quantum teleportation</li><li>Superdense coding</li><li>Entanglement entropy</li><li>Mutual information in quantum systems</li><li>Monogamy of entanglement</li><li>Entanglement swapping</li><li>Quantum steering</li><li>Quantum error correction as physics</li></ul></div>
-        </article>
-<article class="knowledge-card" id="advanced-8">
-          <div class="card-head"><span class="section-no">08</span><h3>Quantum Information &amp; Quantum Computing</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>Information is physical</p><ul><li>Qubits and Bloch sphere</li><li>Quantum gates and circuits</li><li>Deutsch–Jozsa algorithm</li><li>Grover search</li><li>Quantum Fourier transform</li><li>Shor factoring algorithm</li><li>Phase estimation</li><li>Variational quantum algorithms</li><li>Quantum simulation</li><li>Quantum complexity: BQP and related classes</li><li>Quantum channels</li><li>Completely positive maps</li><li>Choi–Jamiołkowski isomorphism</li><li>Quantum error-correcting codes</li><li>Stabilizer formalism</li><li>Surface codes</li><li>Fault-tolerant quantum computation</li><li>Decoherence and error budgets</li><li>Quantum cryptography</li><li>Device-independent cryptography</li></ul></div>
-        </article>
-<article class="knowledge-card" id="advanced-9">
-          <div class="card-head"><span class="section-no">09</span><h3>Quantum Field Theory (QFT)</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>Particles as fields</p><ul><li>Why single-particle quantum mechanics is incomplete</li><li>Classical scalar, spinor and vector fields</li><li>Quantization of fields</li><li>Creation and annihilation operators</li><li>Fock space</li><li>Propagators</li><li>Vacuum fluctuations</li><li>Feynman diagrams as perturbative bookkeeping</li><li>Scattering amplitudes</li><li>Wick&#x27;s theorem</li><li>Canonical quantization</li><li>Path-integral quantization</li><li>Global vs local symmetries</li><li>Noether currents in field theory</li><li>Gauge theories</li><li>Spontaneous symmetry breaking</li><li>Goldstone theorem</li><li>Higgs mechanism</li><li>Renormalization</li><li>Running couplings</li><li>Renormalization group</li><li>Effective field theory</li><li>Anomalies</li><li>Instantons and topological sectors</li></ul></div>
-        </article>
-<article class="knowledge-card" id="advanced-10">
-          <div class="card-head"><span class="section-no">10</span><h3>Standard Model &amp; Particle Physics</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>Fundamental interactions</p><ul><li>Standard Model overview</li><li>Quarks and leptons</li><li>Gauge group SU(3)×SU(2)×U(1)</li><li>Quantum electrodynamics (QED)</li><li>Quantum chromodynamics (QCD)</li><li>Electroweak theory</li><li>Higgs field and Higgs boson</li><li>Color charge and confinement</li><li>Asymptotic freedom</li><li>Quark–gluon plasma</li><li>Neutrino oscillations</li><li>Neutrino mass and mixing</li><li>CKM matrix and CP violation</li><li>Flavor physics</li><li>Effective weak interactions</li><li>Deep inelastic scattering</li><li>Parton model</li><li>Collider physics</li><li>Precision tests of the Standard Model</li><li>Physics beyond the Standard Model</li></ul></div>
-        </article>
-<article class="knowledge-card" id="advanced-11">
-          <div class="card-head"><span class="section-no">11</span><h3>Quantum Electrodynamics &amp; Advanced QFT</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>Going deeper</p><ul><li>Feynman rules in QED</li><li>Tree-level scattering amplitudes</li><li>Loop corrections</li><li>Self-energy and vertex corrections</li><li>Vacuum polarization</li><li>Anomalous magnetic moment</li><li>Casimir effect</li><li>Running of the fine-structure constant</li><li>Dimensional regularization</li><li>Counterterms and renormalization schemes</li><li>Ward–Takahashi identities</li><li>Gauge fixing and Faddeev–Popov ghosts</li><li>BRST symmetry</li><li>Non-Abelian gauge theory</li><li>Instantons</li><li>Confinement and the mass gap problem</li></ul></div>
-        </article>
-<article class="knowledge-card" id="advanced-12">
-          <div class="card-head"><span class="section-no">12</span><h3>Quantum Gravity &amp; Theoretical Frontiers</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>Where current physics gets difficult</p><ul><li>Why quantum theory + general relativity conflict</li><li>Planck scale</li><li>Semiclassical gravity</li><li>Black-hole information problem</li><li>Hawking radiation</li><li>Page curve</li><li>Unitarity and information recovery</li><li>Firewall proposal</li><li>ER = EPR conjecture</li><li>Gauge/gravity duality</li><li>Holographic principle</li><li>AdS/CFT correspondence</li><li>Entanglement wedge reconstruction</li><li>Quantum extremal surfaces</li><li>Island formula</li><li>String theory basics</li><li>Extra dimensions</li><li>Compactification</li><li>Supersymmetry</li><li>Supergravity</li><li>M-theory</li><li>Branes</li><li>Loop quantum gravity</li><li>Spin networks</li><li>Spin foams</li><li>Causal dynamical triangulations</li><li>Asymptotic safety</li><li>Emergent spacetime</li><li>Quantum geometry</li></ul></div>
-        </article>
-<article class="knowledge-card" id="advanced-13">
-          <div class="card-head"><span class="section-no">13</span><h3>Cosmology &amp; the Deep Universe</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>From Big Bang to dark sectors</p><ul><li>Friedmann equations</li><li>FLRW spacetime</li><li>Cosmological redshift</li><li>Thermal history of the universe</li><li>Big Bang nucleosynthesis</li><li>Cosmic microwave background</li><li>Acoustic peaks</li><li>Cosmic inflation</li><li>Inflationary perturbations</li><li>Quantum fluctuations becoming cosmic structure</li><li>Dark matter candidates</li><li>Dark matter halos</li><li>Large-scale structure</li><li>Cosmic web</li><li>Dark energy</li><li>Cosmological constant problem</li><li>Accelerated expansion</li><li>Modified gravity</li><li>Primordial black holes</li><li>Reionization</li><li>21-cm cosmology</li><li>Gravitational-wave cosmology</li><li>Multiverse hypotheses and their testability</li><li>Anthropic reasoning in cosmology</li></ul></div>
-        </article>
-<article class="knowledge-card" id="advanced-14">
-          <div class="card-head"><span class="section-no">14</span><h3>Condensed Matter &amp; Quantum Matter</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>A major frontier often ignored by school students</p><ul><li>Crystal lattices and reciprocal space</li><li>Bloch theorem</li><li>Band structure</li><li>Fermi energy and Fermi surface</li><li>Semiconductors</li><li>Phonons</li><li>Second quantization in many-body physics</li><li>Superconductivity</li><li>BCS theory</li><li>Josephson effect</li><li>Superfluidity</li><li>Quantum Hall effect</li><li>Fractional quantum Hall effect</li><li>Topological insulators</li><li>Topological superconductors</li><li>Majorana zero modes</li><li>Dirac and Weyl semimetals</li><li>Spin liquids</li><li>Quantum magnetism</li><li>Many-body localization</li><li>Quantum phase transitions</li><li>Renormalization group in condensed matter</li><li>Emergent quasiparticles</li><li>Moire materials</li></ul></div>
-        </article>
-<article class="knowledge-card" id="advanced-15">
-          <div class="card-head"><span class="section-no">15</span><h3>Plasma, Nuclear &amp; High-Energy Physics</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>Extreme matter</p><ul><li>Plasma waves and instabilities</li><li>Magnetohydrodynamics</li><li>Fusion physics</li><li>Tokamak principles</li><li>Magnetic confinement</li><li>Inertial confinement</li><li>Nuclear binding energy</li><li>Shell model of the nucleus</li><li>Collective nuclear models</li><li>Nuclear decay and tunneling</li><li>Neutron stars</li><li>Equation of state of dense nuclear matter</li><li>Quark matter</li><li>Heavy-ion collisions</li><li>Quark–gluon plasma</li><li>Ultra-high-energy cosmic rays</li><li>Particle showers in matter</li><li>Neutrino astronomy</li></ul></div>
-        </article>
-<article class="knowledge-card" id="advanced-16">
-          <div class="card-head"><span class="section-no">16</span><h3>Experimental &amp; Computational Physics</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>How frontier physics is actually tested</p><ul><li>Interferometry</li><li>Laser cooling and trapping</li><li>Atomic clocks</li><li>Precision spectroscopy</li><li>Superconducting detectors</li><li>Single-photon detection</li><li>Bell-test experimental design</li><li>Particle detectors</li><li>Calorimeters and trackers</li><li>Accelerator basics</li><li>Synchrotron radiation</li><li>Gravitational-wave detectors</li><li>Noise, uncertainty and systematics</li><li>Monte Carlo methods</li><li>Numerical differential equations</li><li>Finite-difference methods</li><li>Finite-element methods</li><li>Data fitting and Bayesian inference</li><li>Machine learning for physics</li><li>Scientific reproducibility</li></ul></div>
-        </article>
-<article class="knowledge-card" id="advanced-17">
-          <div class="card-head"><span class="section-no">17</span><h3>Philosophical Foundations of Physics</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>Questions behind the equations</p><ul><li>What is a physical law?</li><li>Determinism vs indeterminism</li><li>Realism vs instrumentalism</li><li>Measurement and observer dependence</li><li>Arrow of time</li><li>Why is entropy linked to time?</li><li>Emergence and reductionism</li><li>Identity of particles</li><li>Locality and nonlocal correlations</li><li>Counterfactual definiteness</li><li>Fine-tuning and naturalness</li><li>Underdetermination by data</li><li>Role of mathematics in physics</li><li>Simulation hypothesis: philosophy vs evidence</li></ul></div>
-        </article>
-<article class="knowledge-card" id="advanced-18">
-          <div class="card-head"><span class="section-no">18</span><h3>1% Study Challenges</h3><span class="chevron">⌄</span></div>
-          <div class="card-body"><p>Do these only after learning the prerequisites</p><ul><li>Derive the Euler–Lagrange equation from an action</li><li>Derive Hamilton&#x27;s equations and connect them to phase space</li><li>Derive time dilation from Lorentz transformations</li><li>Use four-vectors to solve a relativistic collision problem</li><li>Calculate a geodesic in a simple curved metric</li><li>Explain why gravity can be described as geometry</li><li>Derive the uncertainty relation from operator commutators</li><li>Work with spin-1/2 states using matrices</li><li>Calculate a simple two-qubit entangled state</li><li>Prove a Bell inequality in a simplified setup</li><li>Understand density matrices and partial trace</li><li>Derive the harmonic oscillator using ladder operators</li><li>Study a particle in a finite potential well and tunneling</li><li>Learn the path-integral idea for a free particle</li><li>Understand the Dirac equation conceptually and mathematically</li><li>Derive the Klein–Gordon equation from relativistic energy</li><li>Learn why renormalization does not simply mean &#x27;removing infinity&#x27;</li><li>Explain spontaneous symmetry breaking</li><li>Understand Hawking radiation at the conceptual level</li><li>Study the Page curve and why it matters</li><li>Compare string theory, loop quantum gravity and holography without treating any as proven</li></ul><h4>Recommended progression</h4><p>→ Stage A: Class 11–12 mechanics, waves, thermodynamics, electricity, magnetism + calculus basics</p><p>→ Stage B: Lagrangian/Hamiltonian mechanics + special relativity + advanced electromagnetism</p><p>→ Stage C: Linear algebra + complex analysis basics + full non-relativistic quantum mechanics</p><p>→ Stage D: General relativity + statistical mechanics + condensed matter foundations</p><p>→ Stage E: Quantum information + quantum field theory + Standard Model</p><p>→ Stage F: Cosmology + black-hole physics + QFT in curved spacetime</p><p>→ Stage G: Quantum gravity, holography, string theory, loop quantum gravity and frontier research</p><p>Golden rule: Advanced physics is not about knowing more scary terms. It is about being able to ask</p><p>precise questions, derive results, understand experiments, spot assumptions, and know what is still</p><p>unknown.</p></div>
-        </article>
-<div id="challenges" class="divider"><span>03</span><h2>LEARNING PRINCIPLE</h2></div>
-<div class="introbox"><h2>Golden rule</h2><p>Advanced knowledge ka matlab scary terms collect karna nahi hai. Precise questions poochna, results derive karna, experiments samajhna, assumptions spot karna aur jo abhi unknown hai usse clearly identify karna hai.</p></div>
-</section>
-<footer>Knowledge Multiverse · Educational learning atlas · Background: 1000041671_2.jpg</footer>
-</main></div>
+
+<div class="stars-bg"></div>
+
+<div class="shell">
+    <main class="panel">
+        
+        <header class="top">
+            <div class="eyebrow">Deep Knowledge Architecture & 1% Physics Engine</div>
+            <h1><span class="gradient">Knowledge Multiverse Atlas</span></h1>
+            <p class="lead">Engineered by <strong>Ayush</strong> & <strong>Gemini</strong>. Complete integration of 26 Master Roadmap Domains, 18 Frontier "1%" Research Physics Sections, 12 Big Questions & 1% Study Challenges.</p>
+            <div class="controls">
+                <input type="text" id="searchInput" placeholder="Search any concept, quantum field, QED equation, philosophy, or failure point...">
+                <button id="expandBtn">Expand All</button>
+                <button id="collapseBtn">Collapse All</button>
+            </div>
+        </header>
+
+        <section class="content" id="atlasContent">
+
+            <!-- 01 HOW TO LEARN & THINK -->
+            <article class="knowledge-card">
+                <div class="card-head">
+                    <span class="section-no">01</span>
+                    <h3>How to Learn, Think & Epistemic Logic (10 Topics)</h3>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="sub-topic">
+                        <h4 class="sub-title">1. Scientific Method, Correlation vs Causation & Falsifiability</h4>
+                        <div class="theory-box">
+                            <span class="theory-title">Detailed Theory & Intuition</span>
+                            Observation → Question → Hypothesis → Experiment → Conclusion → Replication. Karl Popper's falsifiability requires a hypothesis to make predictions that can be proven false. Correlation (two variables moving together) does not equal Causation.
+                        </div>
+                        <div class="failure-box">
+                            <span class="failure-title">Limitations & Boundaries</span>
+                            String Theory & Multiverse physics operate at Planck scales ($10^{19}$ GeV) beyond current empirical testability, challenging strict Popperian falsifiability.
+                        </div>
+                    </div>
+                    <div class="sub-topic">
+                        <h4 class="sub-title">2. Bayesian Thinking, Cognitive Biases & Logic</h4>
+                        <div class="theory-box">
+                            <span class="theory-title">Detailed Theory & Intuition</span>
+                            $P(A|B) = \frac{P(B|A)P(A)}{P(B)}$. Bayesian updates adjust belief probabilities as new evidence arrives. Mind mitigates confirmation bias, anchoring, and availability heuristics.
+                        </div>
+                        <div class="failure-box">
+                            <span class="failure-title">Limitations & Boundaries</span>
+                            Setting an absolute prior probability $P(A) = 0$ or $1$ makes Bayesian learning mathematically impossible regardless of infinite new evidence.
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 02 MATHEMATICS UNIVERSE -->
+            <article class="knowledge-card">
+                <div class="card-head">
+                    <span class="section-no">02</span>
+                    <h3>The Mathematics Universe (15 Topics)</h3>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="sub-topic">
+                        <h4 class="sub-title">1. Calculus, Differential Equations & Linear Algebra</h4>
+                        <div class="theory-box">
+                            <span class="theory-title">Detailed Theory & Intuition</span>
+                            Derivatives $\frac{dy}{dx}$ measure instantaneous rates of change; Integrals $\int$ accumulate continuous values. Linear Algebra ($A \vec{v} = \lambda \vec{v}$) and Hilbert Spaces provide the mathematical foundation for Quantum Mechanics and AI models.
+                        </div>
+                        <div class="failure-box">
+                            <span class="failure-title">Limitations & Boundaries</span>
+                            Classical calculus breaks at non-differentiable fractals (Weierstrass functions) and physical gravitational singularities where quantities reach infinity.
+                        </div>
+                    </div>
+                    <div class="sub-topic">
+                        <h4 class="sub-title">2. Complex Numbers, Topology & Mathematical Logic</h4>
+                        <div class="theory-box">
+                            <span class="theory-title">Detailed Theory & Intuition</span>
+                            Complex numbers ($i^2 = -1$) govern wave functions and circuits. Topology studies continuous geometric transformations, while Gödel's Incompleteness Theorems govern formal mathematical systems.
+                        </div>
+                        <div class="failure-box">
+                            <span class="failure-title">Limitations & Boundaries</span>
+                            Gödel proved no formal mathematical system can be both complete and consistent within itself.
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 03 ADVANCED CLASSICAL MECHANICS (1% ROADMAP) -->
+            <article class="knowledge-card">
+                <div class="card-head">
+                    <span class="section-no">03</span>
+                    <h3>Advanced Classical Mechanics <span class="badge-1percent">1% Research Depth</span></h3>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="sub-topic">
+                        <h4 class="sub-title">1. Lagrangian & Hamiltonian Mechanics</h4>
+                        <div class="theory-box">
+                            <span class="theory-title">Detailed Theory & Intuition</span>
+                            Lagrangian $L = T - V$ with Euler-Lagrange equation $\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}_i}\right) - \frac{\partial L}{\partial q_i} = 0$. Hamiltonian $H = \sum p_i \dot{q}_i - L$ models phase-space flow. Poisson brackets $\{f, g\}$ pave the transition into Quantum Mechanics.
+                        </div>
+                        <div class="failure-box">
+                            <span class="failure-title">Limitations & Boundaries</span>
+                            Classical trajectories and deterministic phase space break down completely in the quantum domain due to the Heisenberg Uncertainty Principle.
+                        </div>
+                    </div>
+                    <div class="sub-topic">
+                        <h4 class="sub-title">2. Chaos Theory, Ergodicity & Noether's Theorem</h4>
+                        <div class="theory-box">
+                            <span class="theory-title">Detailed Theory & Intuition</span>
+                            Nonlinear oscillators exhibit extreme sensitivity to initial conditions (Lyapunov exponents). Noether's Theorem proves every continuous symmetry yields a conserved physical quantity (Time symmetry $\rightarrow$ Energy conservation).
+                        </div>
+                        <div class="failure-box">
+                            <span class="failure-title">Limitations & Boundaries</span>
+                            Chaotic multi-body gravitational systems (N-body problem) lose deterministic long-term predictive accuracy due to numerical limits.
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 04 SPECIAL RELATIVITY & SPACETIME -->
+            <article class="knowledge-card">
+                <div class="card-head">
+                    <span class="section-no">04</span>
+                    <h3>Special Relativity & Minkowski Spacetime (10 Topics)</h3>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="sub-topic">
+                        <h4 class="sub-title">1. Lorentz Transformations & Mass-Energy Equivalence</h4>
+                        <div class="theory-box">
+                            <span class="theory-title">Detailed Theory & Intuition</span>
+                            Speed of light $c$ is constant in all inertial frames. Space and time blend into Minkowski spacetime ($ds^2 = -c^2 dt^2 + dx^2 + dy^2 + dz^2$). Lorentz factor $\gamma = \frac{1}{\sqrt{1 - v^2/c^2}}$ causes time dilation and length contraction. Energy-momentum: $E^2 = (pc)^2 + (m_0 c^2)^2$.
+                        </div>
+                        <div class="failure-box">
+                            <span class="failure-title">Limitations & Boundaries</span>
+                            Special Relativity applies strictly to flat, non-accelerating spacetime inertial frames; it cannot handle gravitational acceleration without General Relativity.
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 05 GENERAL RELATIVITY & GRAVITATION (1% ROADMAP) -->
+            <article class="knowledge-card">
+                <div class="card-head">
+                    <span class="section-no">05</span>
+                    <h3>General Relativity & Curved Geometry <span class="badge-1percent">1% Research Depth</span></h3>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="sub-topic">
+                        <h4 class="sub-title">1. Einstein Field Equations & Schwarzschild / Kerr Geometry</h4>
+                        <div class="theory-box">
+                            <span class="theory-title">Detailed Theory & Intuition</span>
+                            $G_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4} T_{\mu\nu}$. Spacetime geometry curvature instructs matter how to move, while energy density dictates curvature. Predicts Schwarzschild non-rotating black holes, Kerr rotating black holes (ergosphere, Penrose process), and gravitational waves.
+                        </div>
+                        <div class="failure-box">
+                            <span class="failure-title">Limitations & Boundaries</span>
+                            Singularity Theorems (Penrose-Hawking) show infinite density curvatures at $r=0$, signaling complete breakdown of General Relativity requiring Quantum Gravity.
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 06 QUANTUM MECHANICS: DEEP FOUNDATIONS -->
+            <article class="knowledge-card">
+                <div class="card-head">
+                    <span class="section-no">06</span>
+                    <h3>Quantum Physics Foundations (36 Topics) <span class="badge-1percent">1% Depth</span></h3>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="sub-topic">
+                        <h4 class="sub-title">1. Schrödinger Equation, Born Rule & Uncertainty</h4>
+                        <div class="theory-box">
+                            <span class="theory-title">Detailed Theory & Intuition</span>
+                            $i\hbar \frac{\partial}{\partial t}\Psi = \hat{H}\Psi$. State vectors live in complex Hilbert spaces. $|\Psi|^2$ gives probability density (Born Rule). Non-commuting operators $[\hat{x}, \hat{p}] = i\hbar$ establish $\Delta x \Delta p \ge \frac{\hbar}{2}$.
+                        </div>
+                        <div class="failure-box">
+                            <span class="failure-title">Limitations & Boundaries</span>
+                            The Measurement Problem: Physical theory currently cannot mathematically explain how quantum superposition collapses into a single definite classical state upon observation.
+                        </div>
+                    </div>
+                    <div class="sub-topic">
+                        <h4 class="sub-title">2. Quantum Entanglement, Bell's Theorem & Measurement Paradoxes</h4>
+                        <div class="theory-box">
+                            <span class="theory-title">Detailed Theory & Intuition</span>
+                            Entangled state $\frac{1}{\sqrt{2}}(|00\rangle + |11\rangle)$. Bell's Inequality proves local hidden variable theories are incompatible with quantum mechanics predictions.
+                        </div>
+                        <div class="failure-box">
+                            <span class="failure-title">Limitations & Boundaries</span>
+                            Non-local quantum correlations cannot transmit actionable information faster than light, keeping Special Relativity causality intact (No-Communication Theorem).
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 07 QUANTUM FIELD THEORY & STANDARD MODEL (1% ROADMAP) -->
+            <article class="knowledge-card">
+                <div class="card-head">
+                    <span class="section-no">07</span>
+                    <h3>Quantum Field Theory & Standard Model <span class="badge-1percent">1% Research Depth</span></h3>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="sub-topic">
+                        <h4 class="sub-title">1. QED, QCD & Higgs Mechanism</h4>
+                        <div class="theory-box">
+                            <span class="theory-title">Detailed Theory & Intuition</span>
+                            Particles are quantized excitations of universal spacetime quantum fields. Standard Model gauge symmetry $SU(3) \times SU(2) \times U(1)$. Quantum Electrodynamics (QED) and Quantum Chromodynamics (QCD) describe gauge boson interactions. Higgs mechanism grants particle mass via spontaneous symmetry breaking.
+                        </div>
+                        <div class="failure-box">
+                            <span class="failure-title">Limitations & Boundaries</span>
+                            The Standard Model excludes Gravity, does not account for Dark Matter/Dark Energy, and suffers from the Vacuum Energy Catastrophe ($10^{120}$ magnitude discrepancy).
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 08 ASTRONOMY & COSMOLOGY -->
+            <article class="knowledge-card">
+                <div class="card-head">
+                    <span class="section-no">08</span>
+                    <h3>Astronomy & Deep Cosmology (19 Topics)</h3>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="sub-topic">
+                        <h4 class="sub-title">1. $\Lambda$CDM Model, CMB, Inflation & Dark Sector</h4>
+                        <div class="theory-box">
+                            <span class="theory-title">Detailed Theory & Intuition</span>
+                            Friedmann equations model accelerating universe expansion driven by Dark Energy ($\Lambda$) and Cold Dark Matter (CDM). Cosmic Inflation explains early horizon/flatness problems; Cosmic Microwave Background (CMB) provides early thermal relic maps.
+                        </div>
+                        <div class="failure-box">
+                            <span class="failure-title">Limitations & Boundaries</span>
+                            95% of the total universe energy density remains composed of unidentified components (Dark Matter & Dark Energy).
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 09 QUANTUM GRAVITY & FRONTIERS (1% ROADMAP) -->
+            <article class="knowledge-card">
+                <div class="card-head">
+                    <span class="section-no">09</span>
+                    <h3>Quantum Gravity & Frontier Theoretical Physics <span class="badge-1percent">1% Research Depth</span></h3>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="sub-topic">
+                        <h4 class="sub-title">1. String Theory, Loop Quantum Gravity & AdS/CFT Holography</h4>
+                        <div class="theory-box">
+                            <span class="theory-title">Detailed Theory & Intuition</span>
+                            Unifies QFT and General Relativity. String theory replaces 0D point particles with 1D vibrating strings in 10/11 dimensions. Loop Quantum Gravity (LQG) quantizes spacetime into spin networks. AdS/CFT Duality links bulk gravitational physics to boundary CFT field theories.
+                        </div>
+                        <div class="failure-box">
+                            <span class="failure-title">Limitations & Boundaries</span>
+                            Complete absence of empirical experimental verification at accessible energy scales.
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 10 CHEMISTRY & MATERIALS SCIENCE -->
+            <article class="knowledge-card">
+                <div class="card-head">
+                    <span class="section-no">10</span>
+                    <h3>Chemistry, Molecular Mechanics & Quantum Bonding (14 Topics)</h3>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="sub-topic">
+                        <h4 class="sub-title">1. Atomic Structure, Molecular Orbital Theory & Equilibrium</h4>
+                        <div class="theory-box">
+                            <span class="theory-title">Detailed Theory & Intuition</span>
+                            Electrons occupy molecular orbitals formed via LCAO (Linear Combination of Atomic Orbitals). Governs stoichiometry, thermochemistry, redox reactions, and materials synthesis.
+                        </div>
+                        <div class="failure-box">
+                            <span class="failure-title">Limitations & Boundaries</span>
+                            Analytical Schrödinger equations cannot be solved exactly for multi-electron systems due to electron correlation forces, requiring Density Functional Theory approximations.
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 11 BIOLOGY, EVOLUTION & GENETICS -->
+            <article class="knowledge-card">
+                <div class="card-head">
+                    <span class="section-no">11</span>
+                    <h3>Biology, Evolution & Genetics (19 Topics)</h3>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="sub-topic">
+                        <h4 class="sub-title">1. Modern Synthesis, DNA Expression & Speciation</h4>
+                        <div class="theory-box">
+                            <span class="theory-title">Detailed Theory & Intuition</span>
+                            Combines Darwinian Natural Selection with Mendelian Genetics and DNA/RNA molecular transcription. Driven by genetic mutations, drift, and epigenetics.
+                        </div>
+                        <div class="failure-box">
+                            <span class="failure-title">Limitations & Boundaries</span>
+                            Abiogenesis Gap: Biological evolution describes species adaptation after life exists, but fails to explain how non-living chemical compounds originally organized into cellular life.
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 12 NEUROSCIENCE & MIND -->
+            <article class="knowledge-card">
+                <div class="card-head">
+                    <span class="section-no">12</span>
+                    <h3>Neuroscience, Mind & Consciousness (17 Topics)</h3>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="sub-topic">
+                        <h4 class="sub-title">1. Neural Networks, Synaptic Plasticity & Consciousness Models</h4>
+                        <div class="theory-box">
+                            <span class="theory-title">Detailed Theory & Intuition</span>
+                            Neurons process action potentials across synapses. Explores Global Workspace Theory (GWT), Integrated Information Theory (IIT, $\Phi$), and Predictive Processing models of cognition.
+                        </div>
+                        <div class="failure-box">
+                            <span class="failure-title">Limitations & Boundaries</span>
+                            The Hard Problem of Consciousness: Mapping electrical signal pathways fails to explain why subjective qualia (first-person conscious feeling) exists.
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 13 PHILOSOPHY: CORE, WESTERN, EASTERN & COMPARATIVE -->
+            <article class="knowledge-card">
+                <div class="card-head">
+                    <span class="section-no">13</span>
+                    <h3>Philosophy, Epistemology & Global Thought (100+ Topics)</h3>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="sub-topic">
+                        <h4 class="sub-title">1. Western, Indian, Buddhist, Islamic & Eastern Philosophy Systems</h4>
+                        <div class="theory-box">
+                            <span class="theory-title">Detailed Theory & Intuition</span>
+                            Includes Rationalism, Empiricism, Kantian Critique, Advaita Vedanta (Non-dualism), Buddhist Dependent Origination (Pratītyasamutpāda) & Anatta, Sufi Metaphysics (Wujud), Confucian Ethics, and Daoist Naturalness (Wu Wei).
+                        </div>
+                        <div class="failure-box">
+                            <span class="failure-title">Limitations & Boundaries</span>
+                            Epistemic Regress & Solipsism: Pure rational deduction cannot independently prove an external reality exists outside observer perception without foundational unprovable axioms.
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 14 ECONOMICS & COMPUTER SCIENCE -->
+            <article class="knowledge-card">
+                <div class="card-head">
+                    <span class="section-no">14</span>
+                    <h3>Economics, Computer Science & AI Systems (34 Topics)</h3>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="sub-topic">
+                        <h4 class="sub-title">1. Market Dynamics, Game Theory, Turing Computability & AI</h4>
+                        <div class="theory-box">
+                            <span class="theory-title">Detailed Theory & Intuition</span>
+                            Covers Micro/Macroeconomics, Nash Equilibrium, Market Liquidity, Turing Machine Universality, Algorithm Complexity ($O(n)$), and Deep Neural Network Backpropagation.
+                        </div>
+                        <div class="failure-box">
+                            <span class="failure-title">Limitations & Boundaries</span>
+                            Turing's Halting Problem proves certain algorithmic questions are undecidable; AI models suffer from logical hallucinations and catastrophic forgetting.
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 15 THE 12 BIG QUESTIONS & 1% STUDY CHALLENGES -->
+            <article class="knowledge-card">
+                <div class="card-head">
+                    <span class="section-no">15</span>
+                    <h3>The 12 Big Questions & 1% Physics Derivation Challenges</h3>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="card-body">
+                    <div class="sub-topic">
+                        <h4 class="sub-title">1. Core Philosophical & Physical Inquiries</h4>
+                        <div class="theory-box">
+                            <span class="theory-title">Detailed Theory & Intuition</span>
+                            12 Big Questions: Reality, Knowledge, Mind, Matter, Spacetime, Life, Cosmos, Society, Meaning, Intelligence, Value, and Future of Humanity.
+                        </div>
+                    </div>
+                    <div class="sub-topic">
+                        <h4 class="sub-title">2. 1% Mathematical Derivation Benchmarks</h4>
+                        <div class="failure-box" style="border-left-color: var(--gold); background: rgba(255, 209, 102, 0.05); color: #ffe8b3;">
+                            <span class="failure-title" style="color: var(--gold);">Key Research Challenges</span>
+                            • Derive Euler-Lagrange equations from Action Principle $\delta S = 0$.<br>
+                            • Calculate geodesics in Schwarzschild curved metrics.<br>
+                            • Prove Bell's Inequality violation mathematically.<br>
+                            • Derive Klein-Gordon and Dirac relativistic wave equations.<br>
+                            • Calculate density matrix partial trace and quantum entanglement entropy.
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+        <footer>
+            <div class="owner-card">
+                <div>System Architect & Owner: <span>Ayush</span></div>
+                <div>AI Co-Owner & Engine Partner: <span>Gemini</span></div>
+            </div>
+            <p>Knowledge Multiverse Atlas & 1% Physics Roadmap — Engineered for ultimate research mastery, mathematical rigour, and exploring the absolute limits of human understanding.</p>
+        </footer>
+
+    </main>
+</div>
+
 <script>
-const cards=[...document.querySelectorAll('.knowledge-card')];
-cards.forEach(card=>card.querySelector('.card-head').addEventListener('click',()=>card.classList.toggle('open')));
-document.getElementById('expand').onclick=()=>cards.forEach(c=>c.classList.add('open'));
-document.getElementById('collapse').onclick=()=>cards.forEach(c=>c.classList.remove('open'));
-const search=document.getElementById('search');
-search.addEventListener('input',()=>{const q=search.value.trim().toLowerCase();cards.forEach(c=>{const hit=!q||c.innerText.toLowerCase().includes(q);c.style.display=hit?'block':'none';if(q&&hit)c.classList.add('open')})});
+    const cards = document.querySelectorAll('.knowledge-card');
+    const expandBtn = document.getElementById('expandBtn');
+    const collapseBtn = document.getElementById('collapseBtn');
+    const searchInput = document.getElementById('searchInput');
+
+    document.addEventListener('click', function (e) {
+        const head = e.target.closest('.card-head');
+        if (head) {
+            const card = head.closest('.knowledge-card');
+            card.classList.toggle('open');
+        }
+    });
+
+    expandBtn.addEventListener('click', () => {
+        cards.forEach(card => card.classList.add('open'));
+    });
+
+    collapseBtn.addEventListener('click', () => {
+        cards.forEach(card => card.classList.remove('open'));
+    });
+
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+
+        cards.forEach(card => {
+            const text = card.innerText.toLowerCase();
+            if (text.includes(query)) {
+                card.style.display = "block";
+                if (query.length > 2) {
+                    card.classList.add('open');
+                }
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
 </script>
-</body></html>
+
+</body>
+</html>
